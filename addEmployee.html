@@ -76,7 +76,28 @@ h1, h2, h3, h4, h5, h6 {
 button, .btn {
     font-weight: 500;
 }
+.step-block { display: none; }
 
+    /* عرض الخطوة الحالية */
+    .step-block.active { display: block; }
+
+    /* شكل الـ Progress Steps */
+    .step-indicator {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .step-indicator.active {
+        background: #0d6efd;
+        color: #fff;
+    }
 
 </style>
     <body>
@@ -115,9 +136,9 @@ button, .btn {
                     <div class="me-auto d-flex align-items-center header-search d-lg-flex d-none">
                         <div class="position-relative">
                             <img src="img/69033f476c6467000e30771b.png" class="position-relative" width="100px;" height="100px;">
-                            <button class="btn add-employee-btn" id="" type="button">
-                            <a href="addEmployee.html" class="">أضف موظف</a>
-                        </button>
+                            <!-- <button class="btn add-employee-btn" id="" type="button">
+                            <a href="#" class="">أضف موظف</a>
+                        </button> -->
                            <!-- <input type="text" class="form-control" placeholder="Search Keyword"> -->
                            <!-- <span class="input-icon-addon text-dark fs-18 d-inline-flex p-0 header-search-icon"><i class="ti ti-command"></i></span>-->
                         </div>
@@ -415,7 +436,6 @@ button, .btn {
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-users"></i><span>الأبناء</span>
-                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
@@ -442,7 +462,6 @@ button, .btn {
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-currency-dollar"></i><span>قسائم الرواتب</span>
-                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
@@ -462,14 +481,12 @@ button, .btn {
                                  <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-chart-line"></i><span>الإحصائيات والتقارير</span>
-                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
                                  <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-printer"></i><span>التصدير والطباعة</span>
-                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                     
                                 </li>
@@ -484,7 +501,6 @@ button, .btn {
                     </ul>                   
                 </div>
             </div>
-
         </div>
         <!-- Sidenav Menu End -->
 
@@ -494,17 +510,256 @@ button, .btn {
          
         <div class="page-wrapper">
 
-            <!-- Start Content -->
-            <div class="content pb-0">
-            <h3>مرحباً بك في لوحة تحكم وزارة الاقتصاد الوطني</h3>
-            <p>يمكنك إدارة الموظفين، الأبناء، الزوجات، العلاوات، والعديد من البيانات الأخرى بسهولة.</p>
-            </div>
-                <!-- start row -->
-                <div class="row">
-                   
+            <div class="container mt-1" style="margin-bottom: 200px;">
 
-                </div>          
+            <h3 class="text-center mb-4 pt-2">تسجيل موظّف</h3>
+            <form id="employeeForm">
+
+            <!-- STEP 1 -->
+            <div class="step-block active">
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-12">
+                    <h5 class="mb-3">البيانات الرئيسية</h5>
+                    <p style="margin-top: -10px;">يرجى ادخال جميع البيانات التي بجانبها <span style="font-size: 16px; color: red; font-weight: 700;">*</span></p>
+
+                    <div class="row">
+                        <div class="mb-3 col-3">
+                            <label class="form-label">الاسم الأول <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="text" class="form-control" placeholder="الإسم">
+                        </div>
+                <div class="mb-3 col-3">
+                    <label class="form-label">الاسم الثاني <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="text" class="form-control" placeholder="الأب">
+                </div>
+                <div class="mb-3 col-3">
+                    <label class="form-label">الاسم الثالث <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="text" class="form-control" placeholder="الجد">
+                </div>
+                <div class="mb-3 col-3">
+                    <label class="form-label">الاسم الرابع <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="text" class="form-control" placeholder="العائلة">
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label class="form-label">رقم الهوية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="text" class="form-control" placeholder="40147862">
+                </div>
+                <div class="mb-3 col-6">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">الجنس <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                <br>
+                                <div class="btn-group w-100">
+                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">ذكر</a></li>
+                                    <li><a class="dropdown-item" href="#">أنثى</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">الحالة الإجتماعية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                <br>
+                                <div class="btn-group w-100">
+                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">متزوج</a></li>
+                                    <li><a class="dropdown-item" href="#">أعزب</a></li>
+                                    <li><a class="dropdown-item" href="#">أرمل</a></li>
+                                    <li><a class="dropdown-item" href="#">مطلق</a></li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label class="form-label">رقم الجوال الأساسي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="number" class="form-control" placeholder="0594132478">
+                </div>
+                <div class="mb-3 col-6">
+                    <label class="form-label">رقم الجوال البديل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="number" class="form-control" placeholder="0597412547">
+                </div>
+                <div class="mb-3 col-6">
+                    <label class="form-label">الرقم الوظيفي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="number" class="form-control">
+                </div>
+                <div class="mb-3 col-6">
+                    <label class="form-label">تاريخ الميلاد <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="mb-3 col-6">
+                    <label class="form-label">القسم <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <br>
+                    <div class="btn-group w-100 dropdown">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        اختر القسم
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">الإدارة</a></li>
+                        <li><a class="dropdown-item" href="#">المحاسبة</a></li>
+                        <li><a class="dropdown-item" href="#">المراقبة</a></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="mb-3 col-6">
+                    <label class="form-label">مكان العمل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                    <input type="text" class="form-control">
+                </div>
+                </div>
+                </div>
+
+                <button type="button" class="btn btn-primary next-btn center">التالي</button>
+                <button type="button" class="btn btn-success" onclick="draftSave()">
+                    حفظ مبدئي
+                </button>
+
+
+                
+                </div>
             </div>
+            </div>
+
+        <!-- STEP 2 -->
+        <div class="step-block">
+            <div class="row">
+              <div class="col-12">
+                <div class="col-12">
+                 <h5 class="mb-3">البيانات الثانوية</h5>
+
+                  <div class="row">
+                    <div class="mb-3 col-3">
+                        <label class="form-label">المحافظة</label>
+                        <br>
+                        <div class="btn-group w-100">
+                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">القدس</a></li>
+                                <li><a class="dropdown-item" href="#">رام الله والبيرة</a></li>
+                                <li><a class="dropdown-item" href="#">غزة</a></li>
+                                <li><a class="dropdown-item" href="#">بيت لحم</a></li>
+                                <li><a class="dropdown-item" href="#">الخليل</a></li>
+                                <li><a class="dropdown-item" href="#">ديرالبلح (الوسطى)</a></li>
+                                <li><a class="dropdown-item" href="#">أريحا والأغوار</a></li>
+                                <li><a class="dropdown-item" href="#">خانيونيس</a></li>
+                                <li><a class="dropdown-item" href="#">نابلس</a></li>
+                                <li><a class="dropdown-item" href="#">طوباس</a></li>
+                                <li><a class="dropdown-item" href="#">رفح</a></li>
+                                <li><a class="dropdown-item" href="#">طولكرم</a></li>
+                                <li><a class="dropdown-item" href="#">قلقيلية</a></li>
+                                <li><a class="dropdown-item" href="#">بيت لاهيا(الشمال)</a></li>
+                                <li><a class="dropdown-item" href="#">سلفيت</a></li>
+                                <li><a class="dropdown-item" href="#">جنين</a></li>
+                            </ul>
+                            </div>
+
+                    </div>
+            <div class="mb-3 col-3">
+                <label class="form-label">المدينة</label>
+                <input type="text" class="form-control" placeholder="المدينة">
+            </div>
+            <div class="mb-3 col-3">
+                <label class="form-label">عنوان السكن بالتفصيل</label>
+                <input type="text" class="form-control" placeholder="السكن">
+            </div>
+            <div class="mb-3 col-3">
+                <label class="form-label">الحالة الوظيفية</label>
+                <div class="btn-group w-100">
+                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">على رأس عمله</a></li>
+                                <li><a class="dropdown-item" href="#">مسافر</a></li>
+                                <li><a class="dropdown-item" href="#">متقاعد</a></li>
+                                <li><a class="dropdown-item" href="#">مستقيل</a></li>
+                                <li><a class="dropdown-item" href="#">مفصول</a></li>
+                            </ul>
+                    </div>
+            </div>
+
+            <div class="mb-3 col-6">
+                <label class="form-label">المسمى الوظيفي</label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+              <div class="mb-3 col-6">
+                <label class="form-label">تاريخ التعيين</label>
+                <input type="date" class="form-control">
+              </div>
+              <div class="mb-3 col-6">
+                <label class="form-label">المؤهل العلمي</label>
+                <div class="btn-group w-100 dropdown">
+                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    اختر
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">بكالوريس</a></li>
+                    <li><a class="dropdown-item" href="#">ماجستير</a></li>
+                    <li><a class="dropdown-item" href="#">دكتوراة</a></li>
+                    <li><a class="dropdown-item" href="#">بروفسور</a></li>
+                    <li><a class="dropdown-item" href="#">دبلوم</a></li>
+                </ul>
+                </div>
+              </div>
+              <div class="mb-3 col-6">
+                <label class="form-label">المدير المباشر</label>
+               <div class="btn-group w-100 dropdown">
+                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    اختر
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">م.علي</a></li>
+                    <li><a class="dropdown-item" href="#">أ.وفاء</a></li>
+                    <li><a class="dropdown-item" href="#">م.محمد</a></li>
+                </ul>
+                </div>
+              </div>
+
+              <h5 class="mb-3">البيانات المالية</h5>
+            <div class="mb-3 col-6">
+                <label class="form-label">اسم البنك</label>
+                <input type="number" class="form-control">
+              </div>
+            
+              <div class="mb-3 col-6">
+                <label class="form-label">رقم الحساب</label>
+                <input type="number" class="form-control">
+             </div>
+              <div class="mb-3 col-6">
+                <label class="form-label">الأيبان IPAN</label>
+                <input type="number" class="form-control">
+             </div>
+             </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary prev-btn">السابق</button>
+            <button type="button" class="btn btn-primary next-btn">التالي</button>
+        </div>
+           </div>
+
+            
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-block" style="padding-bottom: 170px;">
+            <h5 class="mb-3">رفع الملفات</h5>
+
+            <div class="mb-3">
+                <label class="form-label">الصورة الشخصية</label>
+                <input type="file" class="form-control">
+            </div>
+
+            <button type="button" class="btn btn-secondary prev-btn">السابق</button>
+            <button type="submit" class="btn btn-success" onclick="finalSave()">
+                حفظ نهائي
+            </button>
+        </div>
+
+    </form>
+</div>       
+        </div>
             <!-- End Content -->
 
             <!-- Footer Start -->
@@ -519,25 +774,7 @@ button, .btn {
 			End Page Content
 		========================= -->
 
-         <!-- Start Modal  -->
-        <div class="modal fade" id="delete_modal">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content">
-                    <div class="modal-body text-center">
-                        <div class="mb-3">
-                            <span class="avatar bg-danger"><i class="ti ti-trash fs-24"></i></span>
-                        </div>
-                        <h6 class="mb-1">Delete Confirmation</h6>
-                        <p class="mb-3">Are you sure want to delete todo?</p>
-                        <div class="d-flex justify-content-center">
-                            <a href="javascript:void(0);" class="btn btn-outline-white w-100 me-2" data-bs-dismiss="modal">Cancel</a>
-                            <a href="index.html" class="btn btn-danger w-100">Yes, Delete</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Modal  -->
+        
 
     </div>
 
@@ -547,6 +784,45 @@ button, .btn {
 <script src="js/script.js"></script>
 
     </body>
-    
+    <script>
+let currentStep = 0;
+
+function showStep(index) {
+    const steps = $(".step-block");
+    const indicators = $(".step-indicator");
+
+    steps.removeClass("active");
+    steps.eq(index).addClass("active");
+
+    indicators.removeClass("active");
+    indicators.eq(index).addClass("active");
+}
+
+$(".next-btn").click(function() {
+    currentStep++;
+    showStep(currentStep);
+});
+
+$(".prev-btn").click(function() {
+    currentStep--;
+    showStep(currentStep);
+});
+function draftSave() {
+    alert("✅ تم حفظ البيانات الرئيسية بنجاح");
+}
+
+function finalSave() {
+    alert("✅ تم الحفظ النهائي لجميع البيانات المرسلة بنجاح");
+}
+
+// $("#employeeForm").submit(function(e) {
+//     e.preventDefault();
+//     alert("✅ تم حفظ بيانات الموظف بنجاح!");
+// });
+// function showDraftMessage() {
+//     document.getElementById('draftAlert').classList.remove('d-none');
+// }
+
+</script>    
 
 </html>
