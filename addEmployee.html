@@ -39,7 +39,7 @@
 <style>
     /* شكل الزر الأساسي */
 .add-employee-btn {
-    background: linear-gradient(135deg, #3E007C, #3E007C); /* تدرج لوني */
+    background: linear-gradient(135deg, #D4AF37, #D4AF37); /* تدرج لوني */
     color: #fff;
     border: none;
     padding: 7px 15px;
@@ -56,7 +56,7 @@
 
 /* تأثير عند المرور بالماوس */
 .add-employee-btn:hover {
-    background: linear-gradient(135deg, #3E007C, #3E007C);
+    background: linear-gradient(135deg, #D4AF37, #D4AF37);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
@@ -98,6 +98,17 @@ button, .btn {
         background: #0d6efd;
         color: #fff;
     }
+
+    .footer {
+    position: fixed;   
+    bottom: 0; 
+    left: 0;     
+    width: 100%;   
+    background-color: #fff;
+    z-index: 1000;  
+    border-top: 1px solid #dee2e6; 
+}
+
 
 </style>
     <body>
@@ -338,13 +349,14 @@ button, .btn {
                 <div>
                     <!-- Logo Normal -->
                     <a href="index.html" class="logo logo-normal">
-                        <h5 class="fw-bold text-center text-primary mt-1">وزارة الإقتصاد الوطني</h5>
+                        <h5 class="fw-bold text-center mt-1" style="color: #D4AF37;">وزارة الإقتصاد الوطني</h5>
                     </a>
 
                     <!-- Logo Small -->
-                    <a href="index.html" class="logo-small">
-                        <!-- <p class="fw-bold text-center text-primary mt-1">وزارة الإقتصاد الوطني</p> -->
-                         <img src="img/69033f476c6467000e30771b.png" alt="logo" width="60px;" height="50px;">
+                    <a href="" class="logo-small">
+                          <button class="btn btn-light">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                     </a>
 
                     <!-- Logo Dark -->
@@ -442,7 +454,6 @@ button, .btn {
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-users"></i><span>الزوجات</span>
-                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
@@ -510,7 +521,7 @@ button, .btn {
          
         <div class="page-wrapper">
 
-            <div class="container mt-1" style="margin-bottom: 200px;">
+            <div class="container" style="margin-bottom: 120px;">
 
             <h3 class="text-center mb-4 pt-2">تسجيل موظّف</h3>
             <form id="employeeForm">
@@ -543,7 +554,7 @@ button, .btn {
 
                 <div class="mb-3 col-6">
                     <label class="form-label">رقم الهوية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="text" class="form-control" placeholder="40147862">
+                    <input type="text" class="form-control" placeholder="40147862" id="idNumber">
                 </div>
                 <div class="mb-3 col-6">
                     <div class="col-12">
@@ -729,7 +740,7 @@ button, .btn {
              </div>
               <div class="mb-3 col-6">
                 <label class="form-label">الأيبان IPAN</label>
-                <input type="number" class="form-control">
+                <input type="text" class="form-control" placeholder="PS92PALS000000000000000000000" id="ibanNumber">
              </div>
              </div>
             </div>
@@ -784,7 +795,8 @@ button, .btn {
 <script src="js/script.js"></script>
 
     </body>
-    <script>
+
+<script>
 let currentStep = 0;
 
 function showStep(index) {
@@ -798,31 +810,80 @@ function showStep(index) {
     indicators.eq(index).addClass("active");
 }
 
-$(".next-btn").click(function() {
+// زر التالي
+$(".next-btn").click(function () {
     currentStep++;
     showStep(currentStep);
 });
 
-$(".prev-btn").click(function() {
+// زر السابق
+$(".prev-btn").click(function () {
     currentStep--;
     showStep(currentStep);
 });
+
+// ✅ الحفظ المبدئي – فحص الحقول المطلوبة + رقم الهوية
 function draftSave() {
+
+//فحص لانبوتس الخطوة الأولى
+    let requiredFields = document.querySelectorAll(".step-block.active input");
+
+    let isEmpty = false;
+
+    requiredFields.forEach(function (field) {
+        if (field.value.trim() === "") {
+            isEmpty = true;
+        }
+    });
+    if (isEmpty) {
+        alert("⚠️ يرجى تعبئة جميع الحقول المطلوبة قبل الحفظ المبدئي");
+        return;
+    }
+
+    // فحص رقم الهوية من 9 خانات
+    let idNumber = document.getElementById("idNumber").value.trim();
+
+    if (!/^\d{9}$/.test(idNumber)) {
+        alert("⚠️ رقم الهوية يجب أن يكون من 9 خانات رقمية.");
+        return;
+    }
+
     alert("✅ تم حفظ البيانات الرئيسية بنجاح");
 }
 
+//  الحفظ النهائي
 function finalSave() {
     alert("✅ تم الحفظ النهائي لجميع البيانات المرسلة بنجاح");
 }
 
-// $("#employeeForm").submit(function(e) {
-//     e.preventDefault();
-//     alert("✅ تم حفظ بيانات الموظف بنجاح!");
-// });
-// function showDraftMessage() {
-//     document.getElementById('draftAlert').classList.remove('d-none');
-// }
+//فحص للايبان
+function validateIBANOnBlur() {
+    let iban = document.getElementById("ibanNumber").value.trim();
 
-</script>    
+    if (iban === "") return; 
+
+    if (!iban.startsWith("PS")) {
+        alert("⚠️ رقم ال IBAN يجب أن يبدأ بـ PS");
+        return;
+    }
+
+    if (iban.length < 24 || iban.length > 29) {
+        alert("⚠️ رقم ال IBAN يجب أن يكون بين 24 و 29 خانة");
+        return;
+    }
+
+    const regex = /^[A-Za-z0-9]+$/;
+    if (!regex.test(iban)) {
+        alert("⚠️ رقم ال IBAN يجب أن يحتوي على حروف وأرقام فقط");
+        return;
+    }
+
+    console.log("IBAN صحيح ✔️");
+}
+
+document.getElementById("ibanNumber").addEventListener("blur", validateIBANOnBlur);
+</script>
+
+
 
 </html>
