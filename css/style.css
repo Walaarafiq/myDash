@@ -14796,6 +14796,17 @@ html[data-bs-theme=dark] #light-dark-mode .ti-moon::before {
 .sidebar li a.subdrop .menu-arrow::before {
   content: "\ea5f";
 }
+
+    .footer {
+    position: fixed;   
+    bottom: 0; 
+    left: 0;     
+    width: 100%;   
+    background-color: #fff;
+    z-index: 1000;  
+    border-top: 1px solid #dee2e6; 
+}
+
 .sidebar .sidebar-footer {
   padding: 24px;
 }
