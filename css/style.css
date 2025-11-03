@@ -13229,7 +13229,8 @@ Header CSS
   top: 0;
   z-index: 1000;
   background: var(--pr-topbar-bg);
-  min-height: var(--pr-topbar-height);
+  height: 80px;
+  /* min-height: var(--pr-topbar-height); */
   margin-left: var(--pr-sidenav-width);
   transition: all 0.25s ease-in-out;
   border-bottom: 1px solid var(--pr-topbar-item-border);
