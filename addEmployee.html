@@ -28,6 +28,7 @@
 
     <!-- Tabler Icon CSS -->
     <link rel="stylesheet" href="plugins/tabler-icons/tabler-icons.min.css">
+    <link rel="stylesheet" href="plugins/twitter-bootstrap-wizard/form-wizard.css">
 
     <!-- Simplebar CSS -->
     <link rel="stylesheet" href="plugins/simplebar/simplebar.min.css">
@@ -76,7 +77,10 @@ h1, h2, h3, h4, h5, h6 {
 button, .btn {
     font-weight: 500;
 }
-.step-block { display: none; }
+.step-block { display: none; 
+    font-weight: bold;
+    font-size: 16px;
+}
 
     /* عرض الخطوة الحالية */
     .step-block.active { display: block; }
@@ -99,7 +103,51 @@ button, .btn {
         color: #fff;
     }
 
+#employeeForm{
+    padding: 40px;
+    font-weight: bold;
+    border: 1px solid rgb(225, 222, 222);
+    }
 
+    /* الخلفية */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 999;
+}
+
+/* صندوق البوب */
+.popup-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    width: 330px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+    transition: 0.25s;
+}
+
+/* زر الإغلاق */
+.close-popup {
+    margin-top: 15px;
+    background: #198754;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
 </style>
     <body>
          <div class="main-wrapper">
@@ -508,259 +556,462 @@ button, .btn {
         <!-- ========================
 			Start Page Content
 		========================= -->
-         
-        <div class="page-wrapper">
+         <div class="page-wrapper">
 
-            <div class="container" style="margin-bottom: 120px;">
-
-            <h3 class="text-center mb-4 pt-2">تسجيل موظّف</h3>
-            <form id="employeeForm">
-
-            <!-- STEP 1 -->
-            <div class="step-block active">
-            <div class="row">
-                <div class="col-12">
-                    <div class="col-12">
-                    <h5 class="mb-3">البيانات الرئيسية</h5>
-                    <p style="margin-top: -10px;">يرجى ادخال جميع البيانات التي بجانبها <span style="font-size: 16px; color: red; font-weight: 700;">*</span></p>
-
-                    <div class="row">
-                        <div class="mb-3 col-3">
-                            <label class="form-label">الاسم الأول <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="text" class="form-control" placeholder="الإسم">
-                        </div>
-                <div class="mb-3 col-3">
-                    <label class="form-label">الاسم الثاني <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="text" class="form-control" placeholder="الأب">
-                </div>
-                <div class="mb-3 col-3">
-                    <label class="form-label">الاسم الثالث <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="text" class="form-control" placeholder="الجد">
-                </div>
-                <div class="mb-3 col-3">
-                    <label class="form-label">الاسم الرابع <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="text" class="form-control" placeholder="العائلة">
-                </div>
-
-                <div class="mb-3 col-6">
-                    <label class="form-label">رقم الهوية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="text" class="form-control" placeholder="40147862" id="idNumber">
-                </div>
-                <div class="mb-3 col-6">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-6">
-                                <label class="form-label">الجنس <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                                <br>
-                                <div class="btn-group w-100">
-                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">ذكر</a></li>
-                                    <li><a class="dropdown-item" href="#">أنثى</a></li>
-                                </ul>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label">الحالة الإجتماعية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                                <br>
-                                <div class="btn-group w-100">
-                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">متزوج</a></li>
-                                    <li><a class="dropdown-item" href="#">أعزب</a></li>
-                                    <li><a class="dropdown-item" href="#">أرمل</a></li>
-                                    <li><a class="dropdown-item" href="#">مطلق</a></li>
-                                </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-
-                <div class="mb-3 col-6">
-                    <label class="form-label">رقم الجوال الأساسي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="number" class="form-control" placeholder="0594132478">
-                </div>
-                <div class="mb-3 col-6">
-                    <label class="form-label">رقم الجوال البديل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="number" class="form-control" placeholder="0597412547">
-                </div>
-                <div class="mb-3 col-6">
-                    <label class="form-label">الرقم الوظيفي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="number" class="form-control">
-                </div>
-                <div class="mb-3 col-6">
-                    <label class="form-label">تاريخ الميلاد <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="date" class="form-control">
-                </div>
-                <div class="mb-3 col-6">
-                    <label class="form-label">القسم <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <br>
-                    <div class="btn-group w-100 dropdown">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        اختر القسم
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">الإدارة</a></li>
-                        <li><a class="dropdown-item" href="#">المحاسبة</a></li>
-                        <li><a class="dropdown-item" href="#">المراقبة</a></li>
-                    </ul>
-                    </div>
-                </div>
-                <div class="mb-3 col-6">
-                    <label class="form-label">مكان العمل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                    <input type="text" class="form-control">
-                </div>
-                </div>
-                </div>
-
-                <button type="button" class="btn btn-primary next-btn center">التالي</button>
-                <button type="button" class="btn btn-success" onclick="draftSave()">
-                    حفظ مبدئي
-                </button>
-
-
+			<!-- Start Content -->
+            <div class="content pb-0">
                 
+                <!-- Page Header -->
+                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
+                    <div class="flex-grow-1">
+                        <h5 class="fw-bold mb-0">Form Wizard</h5>
+                    </div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-divide p-0 mb-0">
+                            <li class="breadcrumb-item d-flex align-items-center"><a href="index.html"><i class="ti ti-home me-1"></i>Home</a></li>
+                            <li class="breadcrumb-item d-flex align-items-center"><a href="javascript:void(0);">Forms</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Form Wizard</li>
+                        </ol>
+                    </nav>
                 </div>
-            </div>
-            </div>
+                <!-- End Page Header -->
 
-        <!-- STEP 2 -->
-        <div class="step-block">
-            <div class="row">
-              <div class="col-12">
-                <div class="col-12">
-                 <h5 class="mb-3">البيانات الثانوية</h5>
-
-                  <div class="row">
-                    <div class="mb-3 col-3">
-                        <label class="form-label">المحافظة</label>
-                        <br>
-                        <div class="btn-group w-100">
-                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">القدس</a></li>
-                                <li><a class="dropdown-item" href="#">رام الله والبيرة</a></li>
-                                <li><a class="dropdown-item" href="#">غزة</a></li>
-                                <li><a class="dropdown-item" href="#">بيت لحم</a></li>
-                                <li><a class="dropdown-item" href="#">الخليل</a></li>
-                                <li><a class="dropdown-item" href="#">ديرالبلح (الوسطى)</a></li>
-                                <li><a class="dropdown-item" href="#">أريحا والأغوار</a></li>
-                                <li><a class="dropdown-item" href="#">خانيونيس</a></li>
-                                <li><a class="dropdown-item" href="#">نابلس</a></li>
-                                <li><a class="dropdown-item" href="#">طوباس</a></li>
-                                <li><a class="dropdown-item" href="#">رفح</a></li>
-                                <li><a class="dropdown-item" href="#">طولكرم</a></li>
-                                <li><a class="dropdown-item" href="#">قلقيلية</a></li>
-                                <li><a class="dropdown-item" href="#">بيت لاهيا(الشمال)</a></li>
-                                <li><a class="dropdown-item" href="#">سلفيت</a></li>
-                                <li><a class="dropdown-item" href="#">جنين</a></li>
-                            </ul>
+				<!-- start row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-bottom border-dashed d-flex align-items-center">
+                                <h4 class="header-title">A Basic Wizard</h4>
                             </div>
 
+                            <div class="card-body">
+                                <form>
+                                    <div id="basicwizard">
+                                        <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
+                                            <li class="nav-item">
+                                                <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                    <i class="bi bi-person-circle fs-18 align-middle me-1"></i>
+                                                    <span class="d-none d-sm-inline">Account</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                    <i class="bi bi-emoji-smile fs-18 align-middle me-1"></i>
+                                                    <span class="d-none d-sm-inline">Profile</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#basictab3" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                    <i class="bi bi-check2-circle fs-18 align-middle me-1"></i>
+                                                    <span class="d-none d-sm-inline">Finish</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content b-0 mb-0">
+                                            <div class="tab-pane" id="basictab1">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="userName">User name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control" id="userName" name="userName" value="johne">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="password"> Password</label>
+                                                            <div class="col-md-9">
+                                                                <input type="password" id="password" name="password" class="form-control" value="123456789">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="confirm">Re Password</label>
+                                                            <div class="col-md-9">
+                                                                <input type="password" id="confirm" name="confirm" class="form-control" value="123456789">
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </div>
+
+                                            <div class="tab-pane" id="basictab2">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="name"> First name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" id="name" name="name" class="form-control" value="Francis">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="surname"> Last name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" id="surname" name="surname" class="form-control" value="Brinkman">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="email">Email</label>
+                                                            <div class="col-md-9">
+                                                                <input type="email" id="email" name="email" class="form-control" value="cory1979@hotmail.com">
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </div>
+
+                                            <div class="tab-pane" id="basictab3">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="text-center">
+                                                            <h3 class="mt-0">Thank you !</h3>
+
+                                                            <p class="w-75 mb-2 mx-auto">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis dui. Aliquam
+                                                                mattis dictum aliquet.</p>
+
+                                                            <div class="mb-3">
+                                                                <div class="form-check d-inline-block">
+                                                                    <input type="checkbox" class="form-check-input fs-15" id="customCheck1">
+                                                                    <label class="form-check-label" for="customCheck1">I agree with the Terms and Conditions</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </div>
+
+                                            <div class="d-flex wizard justify-content-between flex-wrap gap-2 mt-3">
+                                                <div class="first">
+                                                    <a href="javascript:void(0);" class="btn btn-primary">
+                                                        First
+                                                    </a>
+                                                </div>
+                                                <div class="d-flex flex-wrap gap-2">
+                                                    <div class="previous">
+                                                        <a href="javascript:void(0);" class="btn btn-primary">
+                                                            <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
+                                                        </a>
+                                                    </div>
+                                                    <div class="next">
+                                                        <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
+                                                            Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="last">
+                                                    <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
+                                                        Finish
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div> <!-- tab-content -->
+
+                                    </div> <!-- end #basicwizard-->
+                                </form>
+                            </div>
+                        </div>
                     </div>
-            <div class="mb-3 col-3">
-                <label class="form-label">المدينة</label>
-                <input type="text" class="form-control" placeholder="المدينة">
-            </div>
-            <div class="mb-3 col-3">
-                <label class="form-label">عنوان السكن بالتفصيل</label>
-                <input type="text" class="form-control" placeholder="السكن">
-            </div>
-            <div class="mb-3 col-3">
-                <label class="form-label">الحالة الوظيفية</label>
-                <div class="btn-group w-100">
-                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">اختر</button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">على رأس عمله</a></li>
-                                <li><a class="dropdown-item" href="#">مسافر</a></li>
-                                <li><a class="dropdown-item" href="#">متقاعد</a></li>
-                                <li><a class="dropdown-item" href="#">مستقيل</a></li>
-                                <li><a class="dropdown-item" href="#">مفصول</a></li>
-                            </ul>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-bottom border-dashed d-flex align-items-center">
+                                <h4 class="header-title">Wizard With Progress Bar</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <form>
+                                    <div id="progressbarwizard">
+
+                                        <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
+                                            <li class="nav-item">
+                                                <a href="#account-2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                    <i class="bi bi-person-circle fs-18 align-middle me-1"></i>
+                                                    <span class="d-none d-sm-inline">Account</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#profile-tab-2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                    <i class="bi bi-emoji-smile fs-18 align-middle me-1"></i>
+                                                    <span class="d-none d-sm-inline">Profile</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#finish-2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                    <i class="bi bi-check2-circle fs-18 align-middle me-1"></i>
+                                                    <span class="d-none d-sm-inline">Finish</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content b-0 mb-0">
+
+                                            <div id="bar" class="progress mb-3" style="height: 7px;">
+                                                <div class="bar progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+                                            </div>
+
+                                            <div class="tab-pane" id="account-2">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="userName1">User name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control" id="userName1" name="userName1" value="johne">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="password1"> Password</label>
+                                                            <div class="col-md-9">
+                                                                <input type="password" id="password1" name="password1" class="form-control" value="123456789">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="confirm1">Re Password</label>
+                                                            <div class="col-md-9">
+                                                                <input type="password" id="confirm1" name="confirm1" class="form-control" value="123456789">
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </div>
+
+                                            <div class="tab-pane" id="profile-tab-2">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="name1"> First name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" id="name1" name="name1" class="form-control" value="Francis">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="surname1"> Last name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" id="surname1" name="surname1" class="form-control" value="Brinkman">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="email1">Email</label>
+                                                            <div class="col-md-9">
+                                                                <input type="email" id="email1" name="email1" class="form-control" value="cory1979@hotmail.com">
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </div>
+
+                                            <div class="tab-pane" id="finish-2">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="text-center">
+                                                            <h3 class="mt-0">Thank you !</h3>
+
+                                                            <p class="w-75 mb-2 mx-auto">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis dui. Aliquam
+                                                                mattis dictum aliquet.</p>
+
+                                                            <div class="mb-3">
+                                                                <div class="form-check d-inline-block">
+                                                                    <input type="checkbox" class="form-check-input fs-15" id="customCheck3">
+                                                                    <label class="form-check-label" for="customCheck3">I agree with the Terms and Conditions</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </div>
+
+                                            <div class="d-flex wizard justify-content-between flex-wrap gap-2 mt-3">
+                                                <div class="first">
+                                                    <a href="javascript:void(0);" class="btn btn-primary">
+                                                        First
+                                                    </a>
+                                                </div>
+                                                <div class="d-flex flex-wrap gap-2">
+                                                    <div class="previous">
+                                                        <a href="javascript:void(0);" class="btn btn-primary">
+                                                            <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
+                                                        </a>
+                                                    </div>
+                                                    <div class="next">
+                                                        <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
+                                                            Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="last">
+                                                    <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
+                                                        Finish
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div> <!-- tab-content -->
+                                    </div> <!-- end #progressbarwizard-->
+                                </form>
+                            </div>
+                        </div>
                     </div>
-            </div>
 
-            <div class="mb-3 col-6">
-                <label class="form-label">المسمى الوظيفي</label>
-                <input type="text" class="form-control" placeholder="">
-              </div>
-              <div class="mb-3 col-6">
-                <label class="form-label">تاريخ التعيين</label>
-                <input type="date" class="form-control">
-              </div>
-              <div class="mb-3 col-6">
-                <label class="form-label">المؤهل العلمي</label>
-                <div class="btn-group w-100 dropdown">
-                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    اختر
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">بكالوريس</a></li>
-                    <li><a class="dropdown-item" href="#">ماجستير</a></li>
-                    <li><a class="dropdown-item" href="#">دكتوراة</a></li>
-                    <li><a class="dropdown-item" href="#">بروفسور</a></li>
-                    <li><a class="dropdown-item" href="#">دبلوم</a></li>
-                </ul>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header border-bottom border-dashed d-flex align-items-center">
+                                <h4 class="header-title">Wizard With Form Validation</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <div id="validation-wizard">
+                                    <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
+                                        <li class="nav-item" data-target-form="#accountForm">
+                                            <a href="#first" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                <i class="bi bi-person-circle fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">Account</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" data-target-form="#profileForm">
+                                            <a href="#second" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                <i class="bi bi-emoji-smile fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">Profile</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" data-target-form="#otherForm">
+                                            <a href="#third" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
+                                                <i class="bi bi-check2-circle fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">Finish</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+
+                                        <div class="tab-pane" id="first">
+                                            <form id="accountForm" method="post" action="#" class="form-horizontal">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="userName3">User name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" class="form-control" id="userName3" name="userName3" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="password3"> Password</label>
+                                                            <div class="col-md-9">
+                                                                <input type="password" id="password3" name="password3" class="form-control" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="confirm3">Re Password</label>
+                                                            <div class="col-md-9">
+                                                                <input type="password" id="confirm3" name="confirm3" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </form>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="second">
+                                            <form id="profileForm" method="post" action="#" class="form-horizontal">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="name3"> First name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" id="name3" name="name3" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="surname3"> Last name</label>
+                                                            <div class="col-md-9">
+                                                                <input type="text" id="surname3" name="surname3" class="form-control" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label class="col-md-3 col-form-label" for="email3">Email</label>
+                                                            <div class="col-md-9">
+                                                                <input type="email" id="email3" name="email3" class="form-control" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+                                                </div>
+                                                <!-- end row -->
+                                            </form>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="third">
+                                            <form id="otherForm" method="post" action="#" class="form-horizontal">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="text-center">
+                                                            <h3 class="mt-0">Thank you !</h3>
+
+                                                            <p class="w-75 mb-2 mx-auto">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis
+                                                                dui. Aliquam mattis dictum aliquet.</p>
+
+                                                            <div class="mb-3">
+                                                                <div class="form-check d-inline-block">
+                                                                    <input type="checkbox" class="form-check-input fs-15" id="customCheck4" required>
+                                                                    <label class="form-check-label" for="customCheck4">I agree with the Terms and Conditions</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+                                                </div>
+                                                <!-- end row -->
+                                            </form>
+                                        </div>
+
+                                        <div class="d-flex wizard justify-content-between flex-wrap gap-2 mt-3">
+                                            <div class="first">
+                                                <a href="javascript:void(0);" class="btn btn-primary">
+                                                    First
+                                                </a>
+                                            </div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <div class="previous">
+                                                    <a href="javascript:void(0);" class="btn btn-primary">
+                                                        <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
+                                                    </a>
+                                                </div>
+                                                <div class="next">
+                                                    <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
+                                                        Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="last">
+                                                <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
+                                                    Finish
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- tab-content -->
+                                </div> <!-- end #validation-wizard-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="mb-3 col-6">
-                <label class="form-label">المدير المباشر</label>
-               <div class="btn-group w-100 dropdown">
-                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    اختر
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">م.علي</a></li>
-                    <li><a class="dropdown-item" href="#">أ.وفاء</a></li>
-                    <li><a class="dropdown-item" href="#">م.محمد</a></li>
-                </ul>
-                </div>
-              </div>
+				<!-- end row -->
 
-              <h5 class="mb-3">البيانات المالية</h5>
-            <div class="mb-3 col-6">
-                <label class="form-label">اسم البنك</label>
-                <input type="number" class="form-control">
-              </div>
-            
-              <div class="mb-3 col-6">
-                <label class="form-label">رقم الحساب</label>
-                <input type="number" class="form-control">
-             </div>
-              <div class="mb-3 col-6">
-                <label class="form-label">الأيبان IPAN</label>
-                <input type="text" class="form-control" placeholder="PS92PALS000000000000000000000" id="ibanNumber">
-             </div>
-             </div>
             </div>
+			<!-- End Content -->
 
-            <button type="button" class="btn btn-secondary prev-btn">السابق</button>
-            <button type="button" class="btn btn-primary next-btn">التالي</button>
-        </div>
-           </div>
-
-            
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="step-block" style="padding-bottom: 170px;">
-            <h5 class="mb-3">رفع الملفات</h5>
-
-            <div class="mb-3">
-                <label class="form-label">الصورة الشخصية</label>
-                <input type="file" class="form-control">
+            <!-- Footer Start -->
+            <div class="footer d-flex align-items-center justify-content-between flex-column flex-sm-row row-gap-2 border-top py-2 px-3">
+                <p class="text-dark mb-0">2025 &copy; <a href="javascript:void(0);" class="link-primary">Dleo HR</a>, All Rights Reserved</p>
+                <p class="text-dark mb-0">Design & Developed by <a href="https://dreamstechnologies.com/" target="_blank" class="link-primary">Dreams Technologies</a></p>
             </div>
+            <!-- Footer End -->
 
-            <button type="button" class="btn btn-secondary prev-btn">السابق</button>
-            <button type="submit" class="btn btn-success" onclick="finalSave()">
-                حفظ نهائي
-            </button>
         </div>
-
-    </form>
-</div>       
-        </div>
+       
             <!-- End Content -->
 
             <!-- Footer Start -->
@@ -771,108 +1022,23 @@ button, .btn {
 
         </div>
 
+     
         <!-- ========================
 			End Page Content
 		========================= -->
 
-        
-
-    </div>
-
+    
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
-
+<!-- Wizrd JS -->
+<script src="plugins/vanilla-wizard/js/wizard.min.js" type="text/javascript"></script>
+<!-- Wizard JS -->
+<script src="js/form-wizard.js" type="text/javascript"></script>
     </body>
 
-<script>
-let currentStep = 0;
 
-function showStep(index) {
-    const steps = $(".step-block");
-    const indicators = $(".step-indicator");
-
-    steps.removeClass("active");
-    steps.eq(index).addClass("active");
-
-    indicators.removeClass("active");
-    indicators.eq(index).addClass("active");
-}
-
-// زر التالي
-$(".next-btn").click(function () {
-    currentStep++;
-    showStep(currentStep);
-});
-
-// زر السابق
-$(".prev-btn").click(function () {
-    currentStep--;
-    showStep(currentStep);
-});
-
-// ✅ الحفظ المبدئي – فحص الحقول المطلوبة + رقم الهوية
-function draftSave() {
-
-//فحص لانبوتس الخطوة الأولى
-    let requiredFields = document.querySelectorAll(".step-block.active input");
-
-    let isEmpty = false;
-
-    requiredFields.forEach(function (field) {
-        if (field.value.trim() === "") {
-            isEmpty = true;
-        }
-    });
-    if (isEmpty) {
-        alert("⚠️ يرجى تعبئة جميع الحقول المطلوبة قبل الحفظ المبدئي");
-        return;
-    }
-
-    // فحص رقم الهوية من 9 خانات
-    let idNumber = document.getElementById("idNumber").value.trim();
-
-    if (!/^\d{9}$/.test(idNumber)) {
-        alert("⚠️ رقم الهوية يجب أن يكون من 9 خانات رقمية.");
-        return;
-    }
-
-    alert("✅ تم حفظ البيانات الرئيسية بنجاح");
-}
-
-//  الحفظ النهائي
-function finalSave() {
-    alert("✅ تم الحفظ النهائي لجميع البيانات المرسلة بنجاح");
-}
-
-//فحص للايبان
-function validateIBANOnBlur() {
-    let iban = document.getElementById("ibanNumber").value.trim();
-
-    if (iban === "") return; 
-
-    if (!iban.startsWith("PS")) {
-        alert("⚠️ رقم ال IBAN يجب أن يبدأ بـ PS");
-        return;
-    }
-
-    if (iban.length < 24 || iban.length > 29) {
-        alert("⚠️ رقم ال IBAN يجب أن يكون بين 24 و 29 خانة");
-        return;
-    }
-
-    const regex = /^[A-Za-z0-9]+$/;
-    if (!regex.test(iban)) {
-        alert("⚠️ رقم ال IBAN يجب أن يحتوي على حروف وأرقام فقط");
-        return;
-    }
-
-    console.log("IBAN صحيح ✔️");
-}
-
-document.getElementById("ibanNumber").addEventListener("blur", validateIBANOnBlur);
-</script>
 
 
 
