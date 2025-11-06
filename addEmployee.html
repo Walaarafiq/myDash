@@ -3,39 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-	<meta name="keywords" content="">
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="Dreams Technologies">
-    <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.png">
-
-    <!-- Apple Icon -->
     <link rel="apple-touch-icon" href="img/apple-icon.png">
-
-    <!-- Theme Config Js -->
     <script src="js/theme-script.js" type=""></script>
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Fontawesome CSS -->
-	<link rel="stylesheet" href="plugins/fontawesome/css/fontawesome.min.css">
-	<link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
-
-    <!-- Tabler Icon CSS -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="plugins/tabler-icons/tabler-icons.min.css">
     <link rel="stylesheet" href="plugins/twitter-bootstrap-wizard/form-wizard.css">
-
-    <!-- Simplebar CSS -->
     <link rel="stylesheet" href="plugins/simplebar/simplebar.min.css">
-
-    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css" id="app-style">
-
 </head>
 <style>
     /* شكل الزر الأساسي */
@@ -148,31 +128,35 @@ button, .btn {
     border-radius: 7px;
     cursor: pointer;
 }
+
+/* أزرار التنقل بين الخطوات */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+}
 </style>
     <body>
-         <div class="main-wrapper">
+          <div class="main-wrapper">
 
-        <!-- Topbar Start -->
         <header class="navbar-header">
-            <div class="page-container topbar-menu">
+             <div class="page-container topbar-menu">
                 <div class="d-flex align-items-center gap-2">
 
-                    <!-- Logo -->
                     <a href="index.html" class="logo">
 
-                        <!-- Logo Normal -->
                         <span class="logo-light">
                             <span class="logo-lg"><img src="img/logo.svg" alt="logo"></span>
                             <span class="logo-sm"><img src="img/logo-small.svg" alt="small logo"></span>
                         </span>
 
-                        <!-- Logo Dark -->
                         <span class="logo-dark">
                             <span class="logo-lg"><img src="img/logo-white.svg" alt="dark logo"></span>
                         </span>
                     </a>
 
-                    <!-- Sidebar Mobile Button -->
                     <a id="mobile_btn" class="mobile-btn" href="#sidebar">
                         <i class="ti ti-menu-deep fs-24"></i>
                     </a>
@@ -180,169 +164,148 @@ button, .btn {
                     <button class="sidenav-toggle-btn btn p-0" id="toggle_btn2"> 
                         <i class="ti ti-chevron-left-pipe"></i>
                     </button> 
-					
-                    <!-- Search -->
+                    
                     <div class="me-auto d-flex align-items-center header-search d-lg-flex d-none">
                         <div class="position-relative">
                             <img src="img/69033f476c6467000e30771b.png" class="position-relative" width="100px;" height="100px;">
-                            <!-- <button class="btn add-employee-btn" id="" type="button">
-                            <a href="#" class="">أضف موظف</a>
-                        </button> -->
-                           <!-- <input type="text" class="form-control" placeholder="Search Keyword"> -->
-                           <!-- <span class="input-icon-addon text-dark fs-18 d-inline-flex p-0 header-search-icon"><i class="ti ti-command"></i></span>-->
-                        </div>
+                            </div>
                     </div>
-					
+                    
                 </div>
 
                 <div class="d-flex align-items-center">
-				
-                    <!-- Search for Mobile -->
-                    <!-- <div class="header-item d-flex d-lg-none me-2">
-                        <button class="topbar-link btn btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" type="button">
-                            <i class="ti ti-search fs-16"></i>
-                        </button>
-                    </div> -->
-
-					  <!-- logout icon -->
+                
                     <div class="header-item">
                         <div>
                             <a href="settings.html" class="btn me-2 topbar-link"><i class="ti ti-logout fs-16"></i></a>
                         </div>
                     </div> 
 
-					<!-- Notification Dropdown -->
                     <div class="header-item">
-						<div class="dropdown me-2">
-						
-							<button class="topbar-link btn btn-icon topbar-link dropdown-toggle drop-arrow-none" data-bs-toggle="dropdown" data-bs-offset="0,24" type="button" aria-haspopup="false" aria-expanded="false">
-								<i class="ti ti-bell fs-16 animate-ring fs-16"></i>
-								<span class="notification-badge"></span>
-							</button>
-							
-							<div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg" style="min-height: 300px;">
-							
-								<div class="p-2 border-bottom">
-									<div class="row align-items-center">
-										<div class="col">
-											<h6 class="m-0 fs-16 fw-semibold"> Notifications</h6>
-										</div>
-									</div>
-								</div>
-								
-								<!-- Notification Body -->
-								<div class="notification-body position-relative z-2 rounded-0" data-simplebar>
-								 
-									<!-- Item-->
-									<div class="dropdown-item notification-item py-3 text-wrap border-bottom" id="notification-1">
-										<div class="d-flex">
-											<div class="me-2 position-relative flex-shrink-0">
-												<img src="img/users/avatar-2.jpg" class="avatar-md rounded-circle" alt="">
-											</div>
-											<div class="flex-grow-1">
-												<p class="mb-0 fw-medium text-dark">Daniel Martinz</p>
-												<p class="mb-1 text-wrap">
-													<span class="fw-medium text-dark">Daniel Martinz</span> equested Sick Leave from May 28 2025 to May 29 2025
-												</p>
-												<div class="d-flex justify-content-between align-items-center">
-													<span class="fs-12"><i class="ti ti-clock me-1"></i>4 min ago</span>
-													<div class="notification-action d-flex align-items-center float-end gap-2">
-														<a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
-														<button class="btn rounded-circle p-0" data-dismissible="#notification-1">
-															<i class="ti ti-x"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-							
-									<!-- Item-->
-									<div class="dropdown-item notification-item py-3 text-wrap border-bottom" id="notification-2">
-										<div class="d-flex">
-											<div class="me-2 position-relative flex-shrink-0">
-												<img src="img/users/user-02.jpg" class="avatar-md rounded-circle" alt="">
-											</div>
-											<div class="flex-grow-1">
-												<p class="mb-0 fw-medium text-dark">Emily Clark</p>
-												<p class="mb-1 text-wrap">
-                                                    Leave for  <span class="fw-medium text-dark"> Emily Clark</span>  has been approved.
-												</p>
-												<div class="d-flex justify-content-between align-items-center">
-													<span class="fs-12"><i class="ti ti-clock me-1"></i>8 min ago</span>
-													<div class="notification-action d-flex align-items-center float-end gap-2">
-														<a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
-														<button class="btn rounded-circle p-0" data-dismissible="#notification-2">
-															<i class="ti ti-x"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<!-- Item-->
-									<div class="dropdown-item notification-item py-3 text-wrap border-bottom" id="notification-3">
-										<div class="d-flex">
-											<div class="me-2 position-relative flex-shrink-0">
-												<img src="img/users/user-04.jpg" class="avatar-md rounded-circle" alt="">
-											</div>
-											<div class="flex-grow-1">
-												<p class="mb-0 fw-medium text-dark"> David</p>
-												<p class="mb-1 text-wrap">
-                                                    Leave request from  <span class="fw-medium text-dark">David Anderson</span>has been rejected.
-												</p>
-												<div class="d-flex justify-content-between align-items-center">
-													<span class="fs-12"><i class="ti ti-clock me-1"></i>15 min ago</span>
-													<div class="notification-action d-flex align-items-center float-end gap-2">
-														<a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
-														<button class="btn rounded-circle p-0" data-dismissible="#notification-3">
-															<i class="ti ti-x"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<!-- Item-->
-									<div class="dropdown-item notification-item py-3 text-wrap" id="notification-4">
-										<div class="d-flex">
-											<div class="me-2 position-relative flex-shrink-0">
-												<img src="img/users/user-24.jpg" class="avatar-md rounded-circle" alt="">
-											</div>
-											<div class="flex-grow-1">
-												<p class="mb-0 fw-medium text-dark">Ann McClure</p>
-												<p class="mb-1 text-wrap">
-                                                    cancelled her appointment scheduled for <span class="fw-medium text-dark">February 5, 2024</span>
-												</p>
-												<div class="d-flex justify-content-between align-items-center">
-													<span class="fs-12"><i class="ti ti-clock me-1"></i>20 min ago</span>
-													<div class="notification-action d-flex align-items-center float-end gap-2">
-														<a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
-														<button class="btn rounded-circle p-0" data-dismissible="#notification-4">
-															<i class="ti ti-x"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									 
-								</div>
-								
-								<!-- View All-->
-								<div class="p-2 rounded-bottom border-top text-center">
-									<a href="notifications.html" class="text-center text-decoration-underline fs-14 mb-0">
-										View All Notifications
-									</a>
-								</div>
-								
-							</div>
-						</div>
-					</div>
+                        <div class="dropdown me-2">
+                        
+                            <button class="topbar-link btn btn-icon topbar-link dropdown-toggle drop-arrow-none" data-bs-toggle="dropdown" data-bs-offset="0,24" type="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="ti ti-bell fs-16 animate-ring fs-16"></i>
+                                <span class="notification-badge"></span>
+                            </button>
+                            
+                            <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg" style="min-height: 300px;">
+                            
+                                <div class="p-2 border-bottom">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h6 class="m-0 fs-16 fw-semibold"> Notifications</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="notification-body position-relative z-2 rounded-0" data-simplebar>
+                                   
+                                        <div class="dropdown-item notification-item py-3 text-wrap border-bottom" id="notification-1">
+                                            <div class="d-flex">
+                                                <div class="me-2 position-relative flex-shrink-0">
+                                                    <img src="img/users/avatar-2.jpg" class="avatar-md rounded-circle" alt="">
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 fw-medium text-dark">Daniel Martinz</p>
+                                                    <p class="mb-1 text-wrap">
+                                                        <span class="fw-medium text-dark">Daniel Martinz</span> equested Sick Leave from May 28 2025 to May 29 2025
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span class="fs-12"><i class="ti ti-clock me-1"></i>4 min ago</span>
+                                                        <div class="notification-action d-flex align-items-center float-end gap-2">
+                                                            <a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
+                                                            <button class="btn rounded-circle p-0" data-dismissible="#notification-1">
+                                                                <i class="ti ti-x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="dropdown-item notification-item py-3 text-wrap border-bottom" id="notification-2">
+                                            <div class="d-flex">
+                                                <div class="me-2 position-relative flex-shrink-0">
+                                                    <img src="img/users/user-02.jpg" class="avatar-md rounded-circle" alt="">
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 fw-medium text-dark">Emily Clark</p>
+                                                    <p class="mb-1 text-wrap">
+                                                        Leave for  <span class="fw-medium text-dark"> Emily Clark</span>  has been approved.
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span class="fs-12"><i class="ti ti-clock me-1"></i>8 min ago</span>
+                                                        <div class="notification-action d-flex align-items-center float-end gap-2">
+                                                            <a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
+                                                            <button class="btn rounded-circle p-0" data-dismissible="#notification-2">
+                                                                <i class="ti ti-x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="dropdown-item notification-item py-3 text-wrap border-bottom" id="notification-3">
+                                            <div class="d-flex">
+                                                <div class="me-2 position-relative flex-shrink-0">
+                                                    <img src="img/users/user-04.jpg" class="avatar-md rounded-circle" alt="">
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 fw-medium text-dark"> David</p>
+                                                    <p class="mb-1 text-wrap">
+                                                        Leave request from  <span class="fw-medium text-dark">David Anderson</span>has been rejected.
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span class="fs-12"><i class="ti ti-clock me-1"></i>15 min ago</span>
+                                                        <div class="notification-action d-flex align-items-center float-end gap-2">
+                                                            <a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
+                                                            <button class="btn rounded-circle p-0" data-dismissible="#notification-3">
+                                                                <i class="ti ti-x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="dropdown-item notification-item py-3 text-wrap" id="notification-4">
+                                            <div class="d-flex">
+                                                <div class="me-2 position-relative flex-shrink-0">
+                                                    <img src="img/users/user-24.jpg" class="avatar-md rounded-circle" alt="">
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="mb-0 fw-medium text-dark">Ann McClure</p>
+                                                    <p class="mb-1 text-wrap">
+                                                        cancelled her appointment scheduled for <span class="fw-medium text-dark">February 5, 2024</span>
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span class="fs-12"><i class="ti ti-clock me-1"></i>20 min ago</span>
+                                                        <div class="notification-action d-flex align-items-center float-end gap-2">
+                                                            <a href="javascript:void(0);" class="notification-read rounded-circle bg-danger" data-bs-toggle="tooltip" title="" data-bs-original-title="Make as Read" aria-label="Make as Read"></a>
+                                                            <button class="btn rounded-circle p-0" data-dismissible="#notification-4">
+                                                                <i class="ti ti-x"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                           
+                                </div>
+                                
+                                <div class="p-2 rounded-bottom border-top text-center">
+                                    <a href="notifications.html" class="text-center text-decoration-underline fs-14 mb-0">
+                                        View All Notifications
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
 
-                  
+                    
 
                      <div class="header-item">
                         <div>
@@ -358,15 +321,12 @@ button, .btn {
                         </div>
                     </div> 
                     
-						
+                        
                 </div>
             </div>
         </header>
-        <!-- Topbar End -->
-
-        <!-- Search Modal -->
         <div class="modal fade" id="searchModal">
-            <div class="modal-dialog modal-lg">
+             <div class="modal-dialog modal-lg">
                 <div class="modal-content bg-transparent">
                     <div class="card shadow-none mb-0">
                         <div class="px-3 py-2 d-flex flex-row align-items-center" id="search-top">
@@ -379,25 +339,20 @@ button, .btn {
             </div>
         </div>
 
-        <!-- Sidenav Menu Start -->
         <div class="sidebar" id="sidebar">
             
-            <!-- Start Logo -->
             <div class="sidebar-logo">
                 <div>
-                    <!-- Logo Normal -->
                     <a href="index.html" class="logo logo-normal">
                         <h5 class="fw-bold text-center mt-1" style="color: #D4AF37;">وزارة الإقتصاد الوطني</h5>
                     </a>
 
-                    <!-- Logo Small -->
                     <a href="" class="logo-small">
                           <button class="btn btn-light">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     </a>
 
-                    <!-- Logo Dark -->
                     <a href="index.html" class="dark-logo">
                         <h5 class="fw-bold text-center text-primary mt-1">وزارة الإقتصاد الوطني</h5>
                     </a>
@@ -406,15 +361,11 @@ button, .btn {
                     <i class="ti ti-chevron-left-pipe"></i>
                 </button>
 
-                <!-- Sidebar Menu Close -->
                 <button class="sidebar-close">
                     <i class="ti ti-x align-middle"></i>
-                </button>                
+                </button>                
             </div>
-            <!-- End Logo -->
-
-            <!-- Sidenav Menu -->
-            <div class="sidebar-inner" data-simplebar>                
+            <div class="sidebar-inner" data-simplebar>                
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title"><span>الرئيسية</span></li>
@@ -437,7 +388,7 @@ button, .btn {
                                         <i class="ti ti-list"></i><span>الثوابت والقوائم</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                     <ul>
+                                    <ul>
                                         <li><a href="index.html" class="active">الوزارات</a></li>
                                         <li><a href="index-2.html">التصنيفات العامة</a></li>
                                         <li><a href="index-3.html">الفئات</a></li>
@@ -460,7 +411,7 @@ button, .btn {
                                         <i class="ti ti-files"></i><span>المرفقات</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                     <ul>
+                                    <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -474,7 +425,7 @@ button, .btn {
                                         <i class="ti ti-building"></i><span>المعلومات البنكية</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                     <ul>
+                                    <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -500,7 +451,7 @@ button, .btn {
                                         <i class="ti ti-wallet"></i><span>العلاوات</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                     <ul>
+                                    <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -519,7 +470,7 @@ button, .btn {
                                         <i class="ti ti-settings"></i><span>عمليات النظام</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                     <ul>
+                                    <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -537,509 +488,416 @@ button, .btn {
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-printer"></i><span>التصدير والطباعة</span>
                                     </a>
-                                    
                                 </li>
                             </ul>
                         </li>
-                      
-                       
-                        
-                        
-                        
-                                            
-                    </ul>                   
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- Sidenav Menu End -->
+        <div class="page-wrapper">
 
-        <!-- ========================
-			Start Page Content
-		========================= -->
-         <div class="page-wrapper">
-
-			<!-- Start Content -->
             <div class="content pb-0">
-                
-                <!-- Page Header -->
-                <div class="d-flex align-items-sm-center flex-sm-row flex-column gap-2 pb-3">
-                    <div class="flex-grow-1">
-                        <h5 class="fw-bold mb-0">Form Wizard</h5>
-                    </div>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb breadcrumb-divide p-0 mb-0">
-                            <li class="breadcrumb-item d-flex align-items-center"><a href="index.html"><i class="ti ti-home me-1"></i>Home</a></li>
-                            <li class="breadcrumb-item d-flex align-items-center"><a href="javascript:void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Form Wizard</li>
-                        </ol>
-                    </nav>
-                </div>
-                <!-- End Page Header -->
-
-				<!-- start row -->
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header border-bottom border-dashed d-flex align-items-center">
-                                <h4 class="header-title">A Basic Wizard</h4>
+                                <h4 class="header-title">تسجيل موظف</h4>
                             </div>
 
-                            <div class="card-body">
-                                <form>
-                                    <div id="basicwizard">
-                                        <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
-                                            <li class="nav-item">
-                                                <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                    <i class="bi bi-person-circle fs-18 align-middle me-1"></i>
-                                                    <span class="d-none d-sm-inline">Account</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                    <i class="bi bi-emoji-smile fs-18 align-middle me-1"></i>
-                                                    <span class="d-none d-sm-inline">Profile</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#basictab3" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                    <i class="bi bi-check2-circle fs-18 align-middle me-1"></i>
-                                                    <span class="d-none d-sm-inline">Finish</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-
-                                        <div class="tab-content b-0 mb-0">
-                                            <div class="tab-pane" id="basictab1">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="userName">User name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" class="form-control" id="userName" name="userName" value="johne">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="password"> Password</label>
-                                                            <div class="col-md-9">
-                                                                <input type="password" id="password" name="password" class="form-control" value="123456789">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="confirm">Re Password</label>
-                                                            <div class="col-md-9">
-                                                                <input type="password" id="confirm" name="confirm" class="form-control" value="123456789">
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                            </div>
-
-                                            <div class="tab-pane" id="basictab2">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="name"> First name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" id="name" name="name" class="form-control" value="Francis">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="surname"> Last name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" id="surname" name="surname" class="form-control" value="Brinkman">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="email">Email</label>
-                                                            <div class="col-md-9">
-                                                                <input type="email" id="email" name="email" class="form-control" value="cory1979@hotmail.com">
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                            </div>
-
-                                            <div class="tab-pane" id="basictab3">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="text-center">
-                                                            <h3 class="mt-0">Thank you !</h3>
-
-                                                            <p class="w-75 mb-2 mx-auto">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis dui. Aliquam
-                                                                mattis dictum aliquet.</p>
-
-                                                            <div class="mb-3">
-                                                                <div class="form-check d-inline-block">
-                                                                    <input type="checkbox" class="form-check-input fs-15" id="customCheck1">
-                                                                    <label class="form-check-label" for="customCheck1">I agree with the Terms and Conditions</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                            </div>
-
-                                            <div class="d-flex wizard justify-content-between flex-wrap gap-2 mt-3">
-                                                <div class="first">
-                                                    <a href="javascript:void(0);" class="btn btn-primary">
-                                                        First
-                                                    </a>
-                                                </div>
-                                                <div class="d-flex flex-wrap gap-2">
-                                                    <div class="previous">
-                                                        <a href="javascript:void(0);" class="btn btn-primary">
-                                                            <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
-                                                        </a>
-                                                    </div>
-                                                    <div class="next">
-                                                        <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
-                                                            Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="last">
-                                                    <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
-                                                        Finish
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div> <!-- tab-content -->
-
-                                    </div> <!-- end #basicwizard-->
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header border-bottom border-dashed d-flex align-items-center">
-                                <h4 class="header-title">Wizard With Progress Bar</h4>
-                            </div>
-
-                            <div class="card-body">
-                                <form>
-                                    <div id="progressbarwizard">
-
-                                        <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
-                                            <li class="nav-item">
-                                                <a href="#account-2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                    <i class="bi bi-person-circle fs-18 align-middle me-1"></i>
-                                                    <span class="d-none d-sm-inline">Account</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#profile-tab-2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                    <i class="bi bi-emoji-smile fs-18 align-middle me-1"></i>
-                                                    <span class="d-none d-sm-inline">Profile</span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#finish-2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                    <i class="bi bi-check2-circle fs-18 align-middle me-1"></i>
-                                                    <span class="d-none d-sm-inline">Finish</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-
-                                        <div class="tab-content b-0 mb-0">
-
-                                            <div id="bar" class="progress mb-3" style="height: 7px;">
-                                                <div class="bar progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
-                                            </div>
-
-                                            <div class="tab-pane" id="account-2">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="userName1">User name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" class="form-control" id="userName1" name="userName1" value="johne">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="password1"> Password</label>
-                                                            <div class="col-md-9">
-                                                                <input type="password" id="password1" name="password1" class="form-control" value="123456789">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="confirm1">Re Password</label>
-                                                            <div class="col-md-9">
-                                                                <input type="password" id="confirm1" name="confirm1" class="form-control" value="123456789">
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                            </div>
-
-                                            <div class="tab-pane" id="profile-tab-2">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="name1"> First name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" id="name1" name="name1" class="form-control" value="Francis">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="surname1"> Last name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" id="surname1" name="surname1" class="form-control" value="Brinkman">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="email1">Email</label>
-                                                            <div class="col-md-9">
-                                                                <input type="email" id="email1" name="email1" class="form-control" value="cory1979@hotmail.com">
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                            </div>
-
-                                            <div class="tab-pane" id="finish-2">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="text-center">
-                                                            <h3 class="mt-0">Thank you !</h3>
-
-                                                            <p class="w-75 mb-2 mx-auto">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis dui. Aliquam
-                                                                mattis dictum aliquet.</p>
-
-                                                            <div class="mb-3">
-                                                                <div class="form-check d-inline-block">
-                                                                    <input type="checkbox" class="form-check-input fs-15" id="customCheck3">
-                                                                    <label class="form-check-label" for="customCheck3">I agree with the Terms and Conditions</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                            </div>
-
-                                            <div class="d-flex wizard justify-content-between flex-wrap gap-2 mt-3">
-                                                <div class="first">
-                                                    <a href="javascript:void(0);" class="btn btn-primary">
-                                                        First
-                                                    </a>
-                                                </div>
-                                                <div class="d-flex flex-wrap gap-2">
-                                                    <div class="previous">
-                                                        <a href="javascript:void(0);" class="btn btn-primary">
-                                                            <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
-                                                        </a>
-                                                    </div>
-                                                    <div class="next">
-                                                        <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
-                                                            Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="last">
-                                                    <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
-                                                        Finish
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                        </div> <!-- tab-content -->
-                                    </div> <!-- end #progressbarwizard-->
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header border-bottom border-dashed d-flex align-items-center">
-                                <h4 class="header-title">Wizard With Form Validation</h4>
-                            </div>
-
-                            <div class="card-body">
-                                <div id="validation-wizard">
-                                    <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
-                                        <li class="nav-item" data-target-form="#accountForm">
-                                            <a href="#first" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                <i class="bi bi-person-circle fs-18 align-middle me-1"></i>
-                                                <span class="d-none d-sm-inline">Account</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" data-target-form="#profileForm">
-                                            <a href="#second" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                <i class="bi bi-emoji-smile fs-18 align-middle me-1"></i>
-                                                <span class="d-none d-sm-inline">Profile</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" data-target-form="#otherForm">
-                                            <a href="#third" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2">
-                                                <i class="bi bi-check2-circle fs-18 align-middle me-1"></i>
-                                                <span class="d-none d-sm-inline">Finish</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="tab-content">
-
-                                        <div class="tab-pane" id="first">
-                                            <form id="accountForm" method="post" action="#" class="form-horizontal">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="userName3">User name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" class="form-control" id="userName3" name="userName3" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="password3"> Password</label>
-                                                            <div class="col-md-9">
-                                                                <input type="password" id="password3" name="password3" class="form-control" required>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="confirm3">Re Password</label>
-                                                            <div class="col-md-9">
-                                                                <input type="password" id="confirm3" name="confirm3" class="form-control" required>
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
-                                            </form>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="second">
-                                            <form id="profileForm" method="post" action="#" class="form-horizontal">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="name3"> First name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" id="name3" name="name3" class="form-control" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="surname3"> Last name</label>
-                                                            <div class="col-md-9">
-                                                                <input type="text" id="surname3" name="surname3" class="form-control" required>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row mb-3">
-                                                            <label class="col-md-3 col-form-label" for="email3">Email</label>
-                                                            <div class="col-md-9">
-                                                                <input type="email" id="email3" name="email3" class="form-control" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end col -->
-                                                </div>
-                                                <!-- end row -->
-                                            </form>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="third">
-                                            <form id="otherForm" method="post" action="#" class="form-horizontal">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="text-center">
-                                                            <h3 class="mt-0">Thank you !</h3>
-
-                                                            <p class="w-75 mb-2 mx-auto">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis
-                                                                dui. Aliquam mattis dictum aliquet.</p>
-
-                                                            <div class="mb-3">
-                                                                <div class="form-check d-inline-block">
-                                                                    <input type="checkbox" class="form-check-input fs-15" id="customCheck4" required>
-                                                                    <label class="form-check-label" for="customCheck4">I agree with the Terms and Conditions</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end col -->
-                                                </div>
-                                                <!-- end row -->
-                                            </form>
-                                        </div>
-
-                                        <div class="d-flex wizard justify-content-between flex-wrap gap-2 mt-3">
-                                            <div class="first">
-                                                <a href="javascript:void(0);" class="btn btn-primary">
-                                                    First
-                                                </a>
-                                            </div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <div class="previous">
-                                                    <a href="javascript:void(0);" class="btn btn-primary">
-                                                        <i class="bx bx-left-arrow-alt me-2"></i>Back To Previous
-                                                    </a>
-                                                </div>
-                                                <div class="next">
-                                                    <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
-                                                        Next Step<i class="bx bx-right-arrow-alt ms-2"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="last">
-                                                <a href="javascript:void(0);" class="btn btn-primary mt-3 mt-md-0">
-                                                    Finish
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                    </div> <!-- tab-content -->
-                                </div> <!-- end #validation-wizard-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				<!-- end row -->
-
+                           <div class="card-body">
+    <form id="profileForm" method="post" action="#" class="form-horizontal" style="padding-left: 15px; padding-right: 15px;">
+        <div id="basicwizard">
+            
+            <div class="progress mb-3" style="height: 5px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="progressBar"></div>
             </div>
-			<!-- End Content -->
+            
+            <ul class="nav nav-pills nav-justified form-wizard-header mb-3" id="wizardTabs">
+                <li class="nav-item">
+                    <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2 active" data-step="1">
+                        <i class="ti ti-user-circle fs-18 align-middle me-1"></i>
+                        <span class="d-none d-sm-inline">الخطوة الأولى (المعلومات الشخصية)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" data-step="2">
+                        <i class="ti ti-clipboard-data fs-18 align-middle me-1"></i>
+                        <span class="d-none d-sm-inline">الخطوة الثانية (البيانات الفرعية)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#basictab3" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" data-step="3">
+                        <i class="ti ti-check fs-18 align-middle me-1"></i>
+                        <span class="d-none d-sm-inline">الخطوة الأخيرة (مراجعة وإنهاء)</span>
+                    </a>
+                </li>
+            </ul>
 
-            <!-- Footer Start -->
-            <div class="footer d-flex align-items-center justify-content-between flex-column flex-sm-row row-gap-2 border-top py-2 px-3">
-                <p class="text-dark mb-0">2025 &copy; <a href="javascript:void(0);" class="link-primary">Dleo HR</a>, All Rights Reserved</p>
-                <p class="text-dark mb-0">Design & Developed by <a href="https://dreamstechnologies.com/" target="_blank" class="link-primary">Dreams Technologies</a></p>
+            <div class="tab-content b-0 mb-0">
+                
+               <div class="tab-pane" id="basictab1">
+                <div class="row pt-2">
+                  <div class="col-12">
+                    <div class="row">
+                        <div class="mb-3 col-3">
+                            <label class="form-label">الاسم الأول <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="text" class="form-control" placeholder="الإسم" id="firstname" name="firstname" required onkeypress="return onlyLetters(event)"
+                            title="يُرجى إدخال حروف عربية أو إنجليزية فقط">
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label">الاسم الثاني <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="text" class="form-control" placeholder="الأب" id="secondname" name="secondname" required onkeypress="return onlyLetters(event)">
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label">الاسم الثالث <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="text" class="form-control" placeholder="الجد" id="thirdname" name="thirdname" required onkeypress="return onlyLetters(event)">
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label">الاسم الرابع <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="text" class="form-control" placeholder="العائلة" id="family" name="family" required onkeypress="return onlyLetters(event)">
+                        </div>
+
+                        <div class="mb-3 col-3">
+                            <label class="form-label">رقم الهوية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="text" class="form-control" placeholder="40147862" id="idNumber" name="idNumber" required
+                            maxlength="9" 
+           onkeypress="return onlyNumbers(event)" 
+           title="يُرجى إدخال 9 أرقام فقط لرقم الهوية">
+                        </div>
+                        <div class="mb-3 col-6">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="form-label">الجنس <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                        <br>
+                                        <select class="form-select" id="gender" name="gender" required>
+                                            <option value="" disabled selected>اختر الجنس...</option>
+                                            <option value="male">ذكر</option>
+                                            <option value="female">أنثى</option>
+                                        </select>
+                                        
+                                    
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">الحالة الإجتماعية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                        <br>
+                                        <select class="form-select" id="maritalStatus" name="maritalStatus" required>
+                                            <option value="" disabled selected>اختر الحالة...</option>
+                                            <option value="single">أعزب/عزباء</option>
+                                            <option value="married">متزوج/متزوجة</option>
+                                            <option value="divorced">مطلق/مطلقة</option>
+                                            <option value="widowed">أرمل/أرملة</option>
+                                        </select>
+                                       
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class="mb-3 col-3">
+                            <label class="form-label">رقم الجوال الأساسي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="number" class="form-control" placeholder="0594132478" id="phone1" name="phone1" required>
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label">رقم الجوال البديل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="number" class="form-control" placeholder="0597412547" id="phone2" name="phone2" required>
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label">الرقم الوظيفي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="number" class="form-control" id="empid" name="empid" required>
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label">تاريخ الميلاد <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label class="form-label">القسم <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <br>
+                            <select class="form-select" id="department" name="department" required>
+                                <option value="" disabled selected>اختر القسم...</option>
+                                <option value="admin">الإدارة العامة</option>
+                                <option value="finance">المالية</option>
+                                <option value="hr">الموارد البشرية</option>
+                                <option value="legal">الشؤون القانونية</option>
+                                <option value="it">تكنولوجيا المعلومات</option>
+                            </select>
+                          
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label class="form-label">مكان العمل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                            <input type="text" class="form-control" id="workpos" name="workpos" required>
+                        </div>
+                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                            </div>
+                <div class="tab-pane" id="basictab2">
+                    <h5 class="mb-3">البيانات الفرعية</h5>
+                    <div class="row pt-2">
+                        <div class="col-12">
+                            <div class="row">
+                    <div class="mb-3 col-3">
+                        <label class="form-label">المحافظة</label>
+                        <br>
+                       <select class="form-select" id="governorate" name="governorate" required>
+                        <option value="" disabled selected>اختر المحافظة...</option>
+                        <option value="jerusalem">القدس</option>
+                        <option value="ramallah">رام الله والبيرة</option>
+                        <option value="gaza">غزة</option>
+                        <option value="bethlehem">بيت لحم</option>
+                        <option value="hebron">الخليل</option>
+                        <option value="deiralbalah">ديرالبلح (الوسطى)</option>
+                        <option value="jericho">أريحا والأغوار</option>
+                        <option value="khanyounis">خانيونيس</option>
+                        <option value="nablus">نابلس</option>
+                        <option value="tubas">طوباس</option>
+                        <option value="rafah">رفح</option>
+                        <option value="tulkarm">طولكرم</option>
+                        <option value="qalqilya">قلقيلية</option>
+                        <option value="beitlahia">بيت لاهيا (الشمال)</option>
+                        <option value="salfit">سلفيت</option>
+                        <option value="jenin">جنين</option>
+                    </select>
+
+                    </div>
+            <div class="mb-3 col-3">
+                <label class="form-label">المدينة</label>
+                <input type="text" class="form-control" placeholder="المدينة">
             </div>
-            <!-- Footer End -->
+            <div class="mb-3 col-3">
+                <label class="form-label">عنوان السكن بالتفصيل</label>
+                <input type="text" class="form-control" placeholder="السكن">
+            </div>
+            <div class="mb-3 col-3">
+                <label class="form-label">الحالة الوظيفية</label>
+               <select class="form-select" id="employmentStatus" name="employmentStatus" required>
+                        <option value="" disabled selected>اختر الحالة...</option>
+                        <option value="active">على رأس عمله</option>
+                        <option value="traveling">مسافر</option>
+                        <option value="retired">متقاعد</option>
+                        <option value="resigned">مستقيل</option>
+                        <option value="fired">مفصول</option>
+                    </select>
+            </div>
+
+            <div class="mb-3 col-3">
+                <label class="form-label">المسمى الوظيفي</label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+              <div class="mb-3 col-3">
+                <label class="form-label">تاريخ التعيين</label>
+                <input type="date" class="form-control">
+              </div>
+              <div class="mb-3 col-3">
+                <label class="form-label">المؤهل العلمي</label>
+                <select class="form-select" id="qualification2" name="qualification2" required>
+                        <option value="" disabled selected>اختر المؤهل...</option>
+                        <option value="bachelor">بكالوريوس</option>
+                        <option value="master">ماجستير</option>
+                        <option value="phd">دكتوراة</option>
+                        <option value="professor">بروفسور</option>
+                        <option value="diploma">دبلوم</option>
+                    </select>
+              </div>
+              <div class="mb-3 col-3">
+                <label class="form-label">المدير المباشر</label>
+               <select class="form-select" id="directManager" name="directManager" required>
+                        <option value="" disabled selected>اختر المدير...</option>
+                        <option value="ali">م.علي</option>
+                        <option value="wafaa">أ.وفاء</option>
+                        <option value="mohammad">م.محمد</option>
+                    </select>
+              </div>
+
+              <h5 class="mb-3">البيانات المالية</h5>
+            <div class="mb-3 col-3">
+                <label class="form-label">اسم البنك</label>
+                <input type="number" class="form-control">
+              </div>
+            
+              <div class="mb-3 col-3">
+                <label class="form-label">رقم الحساب</label>
+                <input type="number" class="form-control">
+             </div>
+              <div class="mb-3 col-6">
+                <label class="form-label">الأيبان IPAN</label>
+                <input type="text" class="form-control" placeholder="PS92PALS000000000000000000000" id="ibanNumber">
+             </div>
+             </div>
+                        </div>
+                    </div>
+                </div> <div class="tab-pane" id="basictab3">
+                    <h5 class="mb-3">مراجعة البيانات</h5>
+                    <div class="row pt-2">
+                        <div class="col-12 text-center">
+                            <p class="fs-18 fw-bold">الرجاء مراجعة جميع البيانات المدخلة قبل الإرسال.</p>
+                            <i class="ti ti-check-circle text-success" style="font-size: 80px;"></i>
+                        </div>
+                    </div>
+                </div> </div> <div class="action-buttons">
+                 <button type="button" class="btn btn-secondary" id="prevBtn" disabled>
+                    <i class="ti ti-arrow-right me-1"></i> السابق
+                </button>
+                
+                <button type="button" class="btn add-employee-btn" id="nextBtn">
+                     التالي <i class="ti ti-arrow-left ms-1"></i>
+                </button>
+                 <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                    إرسال البيانات <i class="ti ti-send ms-1"></i>
+                </button>
+            </div>
 
         </div>
-       
-            <!-- End Content -->
-
-            <!-- Footer Start -->
+    </form>
+</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
             <div class="footer d-flex align-items-center justify-content-center flex-column  row-gap-2 border-top py-2 px-3">
                 <p class="text-dark mb-0">2025 &copy; <a href="javascript:void(0);" class="link-primary">جميع الحقوق محفوظة </a> "Ministry Of National Economy"</p>
             </div>
-            <!-- Footer End -->
-
+            </div>
         </div>
 
-     
-        <!-- ========================
-			End Page Content
-		========================= -->
+    <script src="js/vendor.min.js"></script>
 
+    <script src="plugins/simplebar/simplebar.min.js"></script>
     
+    <script src="js/app.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
-<!-- Wizrd JS -->
-<script src="plugins/vanilla-wizard/js/wizard.min.js" type="text/javascript"></script>
-<!-- Wizard JS -->
-<script src="js/form-wizard.js" type="text/javascript"></script>
+    <script>
+    const wizardTabs = document.getElementById('wizardTabs');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const tabPanes = document.querySelectorAll('.tab-content .tab-pane');
+
+    let currentStep = 1; // الخطوة الحالية
+
+    function updateWizardUI() {
+        let progress = ((currentStep - 1) / 2) * 100;
+        progressBar.style.width = progress + '%';
+        progressBar.setAttribute('aria-valuenow', progress);
+
+        // 2. تفعيل علامة التبويب الصحيحة
+        wizardTabs.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (parseInt(link.getAttribute('data-step')) === currentStep) {
+                link.classList.add('active');
+            }
+        });
+
+        tabPanes.forEach(pane => {
+            pane.classList.remove('active');
+            if (pane.id === `basictab${currentStep}`) {
+                pane.classList.add('active');
+            }
+        });
+
+        prevBtn.disabled = (currentStep === 1); // تعطيل زر السابق في الخطوة الأولى
+        
+        if (currentStep === 3) {
+            nextBtn.style.display = 'none'; // إخفاء التالي
+            submitBtn.style.display = 'inline-block'; // إظهار إرسال
+        } else {
+            nextBtn.style.display = 'inline-block'; // إظهار التالي
+            submitBtn.style.display = 'none'; // إخفاء إرسال
+        }
+    }
+
+    // دالة الانتقال للخطوة التالية
+    function nextStep() {
+        if (currentStep < 3) {
+            if (!validateCurrentStep(currentStep)) {
+                alert("الرجاء إدخال جميع الحقول المطلوبة قبل المتابعة.");
+                return;
+            }
+
+            currentStep++;
+            updateWizardUI();
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            updateWizardUI();
+        }
+    }
+
+    // دالة للتحقق من الحقول المطلوبة   
+    function validateCurrentStep(step) {
+        if (step === 1) {
+            const firstname = document.getElementById('firstname').value.trim();
+            const secondname = document.getElementById('secondname').value.trim();
+            const thirdname = document.getElementById('thirdname').value.trim();
+            const phone1 = document.getElementById('phone1').value.trim();
+            const phone2 = document.getElementById('phone2').value.trim();
+            const workpos = document.getElementById('workpos').value.trim();
+            const family = document.getElementById('family').value.trim();
+            const idNumber = document.getElementById('idNumber').value.trim();
+            const birthdate = document.getElementById('idNumber').value.trim();
+            const empid = document.getElementById('empid').value.trim();
+            const department = document.getElementById('department').value.trim();
+            const gender = document.getElementById('gender').value.trim();
+            const maritalStatus = document.getElementById('maritalStatus').value.trim();
+            
+            return firstname !== '' && secondname !== '' && thirdname !='' && family !='' && idNumber !== '' && phone1 !== ''
+            && phone2 !== '' && birthdate !== ''
+            && empid !== '' && department !== '' && gender !== '' && maritalStatus !== '' ;
+        }
+        return true; 
+    }
+
+    nextBtn.addEventListener('click', nextStep);
+    prevBtn.addEventListener('click', prevStep);
+    
+    submitBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // منع الإرسال الافتراضي
+        alert('تم إرسال بيانات الموظف بنجاح!');
+       
+    });
+
+    wizardTabs.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetStep = parseInt(this.getAttribute('data-step'));
+                currentStep = targetStep;
+                updateWizardUI();
+        });
+    });
+
+    updateWizardUI();
+</script>
+<script>function onlyLetters(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    
+    // الأحرف الإنجليزية (كبيرة وصغيرة) والمسافة
+    if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode == 32) {
+        return true;
+    }
+    
+    // الأحرف العربية ()
+    if (charCode >= 0x0600 && charCode <= 0x06FF) { 
+        return true;
+    }
+    // منع أي إدخال آخر (أرقام، رموز، إلخ)
+    return false; 
+}</script>
+<script>
+    // دالة لقبول الأرقام فقط (من 0 إلى 9)
+    function onlyNumbers(event) {
+        var charCode = (event.which) ? event.which : event.keyCode;
+        
+        // السماح بالأرقام فقط (ASCII 48-57 للأرقام من 0-9)
+        if (charCode >= 48 && charCode <= 57) {
+            return true;
+        }
+       return false;
+    }
+</script>
     </body>
-
-
-
-
-
 </html>
