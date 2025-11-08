@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="plugins/tabler-icons/tabler-icons.min.css">
-    <link rel="stylesheet" href="plugins/twitter-bootstrap-wizard/form-wizard.css">
+    <!-- <link rel="stylesheet" href="plugins/twitter-bootstrap-wizard/form-wizard.css"> -->
     <link rel="stylesheet" href="plugins/simplebar/simplebar.min.css">
     <link rel="stylesheet" href="css/style.css" id="app-style">
 </head>
@@ -137,6 +137,10 @@ button, .btn {
     margin-top: 20px;
     border-top: 1px solid #eee;
 }
+/* .form-wizard-header{
+    width: 100%;
+    margin-left: 0;
+} */
 </style>
     <body>
           <div class="main-wrapper">
@@ -339,20 +343,25 @@ button, .btn {
             </div>
         </div>
 
+         <!-- Sidenav Menu Start -->
         <div class="sidebar" id="sidebar">
             
+            <!-- Start Logo -->
             <div class="sidebar-logo">
                 <div>
+                    <!-- Logo Normal -->
                     <a href="index.html" class="logo logo-normal">
                         <h5 class="fw-bold text-center mt-1" style="color: #D4AF37;">وزارة الإقتصاد الوطني</h5>
                     </a>
 
+                    <!-- Logo Small -->
                     <a href="" class="logo-small">
                           <button class="btn btn-light">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     </a>
 
+                    <!-- Logo Dark -->
                     <a href="index.html" class="dark-logo">
                         <h5 class="fw-bold text-center text-primary mt-1">وزارة الإقتصاد الوطني</h5>
                     </a>
@@ -361,11 +370,15 @@ button, .btn {
                     <i class="ti ti-chevron-left-pipe"></i>
                 </button>
 
+                <!-- Sidebar Menu Close -->
                 <button class="sidebar-close">
                     <i class="ti ti-x align-middle"></i>
-                </button>                
+                </button>                
             </div>
-            <div class="sidebar-inner" data-simplebar>                
+            <!-- End Logo -->
+
+            <!-- Sidenav Menu -->
+            <div class="sidebar-inner" data-simplebar>                
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title"><span>الرئيسية</span></li>
@@ -388,7 +401,7 @@ button, .btn {
                                         <i class="ti ti-list"></i><span>الثوابت والقوائم</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                    <ul>
+                                     <ul>
                                         <li><a href="index.html" class="active">الوزارات</a></li>
                                         <li><a href="index-2.html">التصنيفات العامة</a></li>
                                         <li><a href="index-3.html">الفئات</a></li>
@@ -411,7 +424,7 @@ button, .btn {
                                         <i class="ti ti-files"></i><span>المرفقات</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                    <ul>
+                                     <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -425,7 +438,7 @@ button, .btn {
                                         <i class="ti ti-building"></i><span>المعلومات البنكية</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                    <ul>
+                                     <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -437,12 +450,14 @@ button, .btn {
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-users"></i><span>الأبناء</span>
+                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-users"></i><span>الزوجات</span>
+                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
@@ -451,7 +466,7 @@ button, .btn {
                                         <i class="ti ti-wallet"></i><span>العلاوات</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                    <ul>
+                                     <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -462,6 +477,7 @@ button, .btn {
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-currency-dollar"></i><span>قسائم الرواتب</span>
+                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
@@ -470,7 +486,7 @@ button, .btn {
                                         <i class="ti ti-settings"></i><span>عمليات النظام</span>
                                         <span class="menu-arrow"></span>
                                     </a>
-                                    <ul>
+                                     <ul>
                                         <li><a href="index.html" class="active">بيانات الموظفين</a></li>
                                         <li><a href="index-2.html">عقود دائمة</a></li>
                                         <li><a href="index-3.html">متقاعدين</a></li>
@@ -481,19 +497,30 @@ button, .btn {
                                  <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-chart-line"></i><span>الإحصائيات والتقارير</span>
+                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
                                 </li>
 
                                  <li class="submenu">
                                     <a href="javascript:void(0);" class="subdrop">
                                         <i class="ti ti-printer"></i><span>التصدير والطباعة</span>
+                                        <!-- <span class="menu-arrow"></span> -->
                                     </a>
+                                    
                                 </li>
+                                
                             </ul>
                         </li>
-                    </ul>
+                      
+                       
+                        
+                        
+                        
+                                            
+                    </ul>                   
                 </div>
             </div>
+
         </div>
         <div class="page-wrapper">
 
@@ -505,261 +532,605 @@ button, .btn {
                                 <h4 class="header-title">تسجيل موظف</h4>
                             </div>
 
-                           <div class="card-body">
-    <form id="profileForm" method="post" action="#" class="form-horizontal" style="padding-left: 15px; padding-right: 15px;">
-        <div id="basicwizard">
-            
-            <div class="progress mb-3" style="height: 5px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="progressBar"></div>
-            </div>
-            
-            <ul class="nav nav-pills nav-justified form-wizard-header mb-3" id="wizardTabs">
-                <li class="nav-item">
-                    <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2 active" data-step="1">
-                        <i class="ti ti-user-circle fs-18 align-middle me-1"></i>
-                        <span class="d-none d-sm-inline">الخطوة الأولى (المعلومات الشخصية)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" data-step="2">
-                        <i class="ti ti-clipboard-data fs-18 align-middle me-1"></i>
-                        <span class="d-none d-sm-inline">الخطوة الثانية (البيانات الفرعية)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#basictab3" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" data-step="3">
-                        <i class="ti ti-check fs-18 align-middle me-1"></i>
-                        <span class="d-none d-sm-inline">الخطوة الأخيرة (مراجعة وإنهاء)</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content b-0 mb-0">
-                
-               <div class="tab-pane" id="basictab1">
-                <div class="row pt-2">
-                  <div class="col-12">
-                    <div class="row">
-                        <div class="mb-3 col-3">
-                            <label class="form-label">الاسم الأول <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="text" class="form-control" placeholder="الإسم" id="firstname" name="firstname" required onkeypress="return onlyLetters(event)"
-                            title="يُرجى إدخال حروف عربية أو إنجليزية فقط">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label class="form-label">الاسم الثاني <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="text" class="form-control" placeholder="الأب" id="secondname" name="secondname" required onkeypress="return onlyLetters(event)">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label class="form-label">الاسم الثالث <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="text" class="form-control" placeholder="الجد" id="thirdname" name="thirdname" required onkeypress="return onlyLetters(event)">
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label class="form-label">الاسم الرابع <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="text" class="form-control" placeholder="العائلة" id="family" name="family" required onkeypress="return onlyLetters(event)">
-                        </div>
-
-                        <div class="mb-3 col-3">
-                            <label class="form-label">رقم الهوية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="text" class="form-control" placeholder="40147862" id="idNumber" name="idNumber" required
-                            maxlength="9" 
-           onkeypress="return onlyNumbers(event)" 
-           title="يُرجى إدخال 9 أرقام فقط لرقم الهوية">
-                        </div>
-                        <div class="mb-3 col-6">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label class="form-label">الجنس <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                                        <br>
-                                        <select class="form-select" id="gender" name="gender" required>
-                                            <option value="" disabled selected>اختر الجنس...</option>
-                                            <option value="male">ذكر</option>
-                                            <option value="female">أنثى</option>
-                                        </select>
-                                        
+                        <div class="card-body">
+                            <form id="profileForm" method="post" action="#" class="form-horizontal" style="padding-left: 15px; padding-right: 15px;">
+                                <div id="basicwizard">
                                     
+                                    <div class="progress mb-3" style="height: 5px;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="progressBar"></div>
                                     </div>
-                                    <div class="col-6">
-                                        <label class="form-label">الحالة الإجتماعية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                                        <br>
-                                        <select class="form-select" id="maritalStatus" name="maritalStatus" required>
-                                            <option value="" disabled selected>اختر الحالة...</option>
-                                            <option value="single">أعزب/عزباء</option>
-                                            <option value="married">متزوج/متزوجة</option>
-                                            <option value="divorced">مطلق/مطلقة</option>
-                                            <option value="widowed">أرمل/أرملة</option>
+                                    
+                                    <ul class="nav nav-pills nav-justified form-wizard-header mb-3" id="wizardTabs">
+                                        <li class="nav-item">
+                                            <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2 active"
+                                             data-step="1" style=" margin-right: -40px; padding-right: 10px;width: 200px; text-align: center;">
+                                                <i class="ti ti-user fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">بيانات الموظف الأساسية</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" data-step="2">
+                                                <i class="ti ti-folder fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline" style="font-size: 14px;">البيانات التنظيمية</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#basictab3" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" data-step="3">
+                                                <i class="ti ti-briefcase fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">البيانات الوظيفية</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#basictab4" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" 
+                                            data-step="4">
+                                                <i class="ti ti-tag fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">بيانات التصنيف والدرجة</span>
+                                            </a>
+                                        </li>
+                                         <li class="nav-item">
+                                            <a href="#basictab5" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" 
+                                            data-step="5">
+                                                <i class="ti ti-clipboard fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">البيانات المهنية والمؤهلات</span>
+                                            </a>
+                                        </li>
+                                         <li class="nav-item">
+                                            <a href="#basictab6" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" 
+                                            data-step="6">
+                                                <i class="ti ti-clipboard fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">بيانات إدارية إضافية</span>
+                                            </a>
+                                        </li>
+                                         <li class="nav-item">
+                                            <a href="#basictab7" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" 
+                                            data-step="7">
+                                                <i class="ti ti-wallet fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">البيانات المالية للموظف</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#basictab8" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 py-2" 
+                                            data-step="8">
+                                                <i class="ti ti-eye fs-18 align-middle me-1"></i>
+                                                <span class="d-none d-sm-inline">مراجعة<br>وإنهاء</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content b-0 mb-0">        
+                                    <div class="tab-pane" id="basictab1">
+                                        <div class="row pt-2">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">الاسم الأول <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="الإسم" id="firstname" name="firstname" required onkeypress="return onlyLetters(event)"
+                                                    title="يُرجى إدخال حروف عربية أو إنجليزية فقط">
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">الاسم الثاني <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="الأب" id="secondname" name="secondname" required onkeypress="return onlyLetters(event)">
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">الاسم الثالث <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="الجد" id="thirdname" name="thirdname" required onkeypress="return onlyLetters(event)">
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">الاسم الرابع <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="العائلة" id="family" name="family" required onkeypress="return onlyLetters(event)">
+                                                </div>
+
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">رقم الهوية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="text" class="form-control" placeholder="40147862" id="idNumber" name="idNumber" required
+                                                    maxlength="9" 
+                                onkeypress="return onlyNumbers(event)" 
+                                title="يُرجى إدخال 9 أرقام فقط لرقم الهوية">
+                                                </div>
+                                                <div class="mb-3 col-6">
+                                                    <div class="col-12">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label class="form-label">الجنس <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                                <br>
+                                                                <select class="form-select" id="gender" name="gender" required>
+                                                                    <option value="" disabled selected>اختر الجنس...</option>
+                                                                    <option value="male">ذكر</option>
+                                                                    <option value="female">أنثى</option>
+                                                                </select>
+                                                                
+                                                            
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label class="form-label">الحالة الإجتماعية <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                                <br>
+                                                                <select class="form-select" id="maritalStatus" name="maritalStatus" required>
+                                                                    <option value="" disabled selected>اختر الحالة...</option>
+                                                                    <option value="single">أعزب/عزباء</option>
+                                                                    <option value="married">متزوج/متزوجة</option>
+                                                                    <option value="divorced">مطلق/مطلقة</option>
+                                                                    <option value="widowed">أرمل/أرملة</option>
+                                                                </select>
+                                                            
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">رقم الجوال الأساسي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="number" class="form-control" placeholder="0594132478" id="phone1" name="phone1" required>
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">رقم الجوال البديل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="number" class="form-control" placeholder="0597412547" id="phone2" name="phone2" required>
+                                                </div>
+                                                <!-- <div class="mb-3 col-3">
+                                                    <label class="form-label">الرقم الوظيفي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="number" class="form-control" id="empid" name="empid" required>
+                                                </div> -->
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">تاريخ الميلاد <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                                                </div>
+                                                <!-- <div class="mb-3 col-3">
+                                                    <label class="form-label">القسم <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <br>
+                                                    <select class="form-select" id="department" name="department" required>
+                                                        <option value="" disabled selected>اختر القسم...</option>
+                                                        <option value="admin">الإدارة العامة</option>
+                                                        <option value="finance">المالية</option>
+                                                        <option value="hr">الموارد البشرية</option>
+                                                        <option value="legal">الشؤون القانونية</option>
+                                                        <option value="it">تكنولوجيا المعلومات</option>
+                                                    </select>
+                                                
+                                                </div> -->
+                                                <div class="mb-3 col-6">
+                                                    <label class="form-label">عنوان السكن بالتفصيل<span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
+                                                    <input type="text" class="form-control" id="workpos" name="workpos" required>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                <label for="governorate" class="form-label">المحافظة</label>
+                                                <select class="form-select" id="governorate">
+                                                <option value="">اختر المحافظة</option>
+                                                <option value="gaza">غزة</option>
+                                                <option value="ramallah">رام الله</option>
+                                                <option value="hebron">الخليل</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="city" class="form-label">المدينة</label>
+                                                <select class="form-select" id="city">
+                                                <option value="">اختر المدينة</option>
+                                                </select>
+                                            </div>
+                                                </div>
+                                             </div> <!-- end col -->
+                                        </div> <!-- end row -->
+                                        </div>
+                                        <div class="tab-pane" id="basictab2">
+                                            <!-- <h5 class="mb-3">البيانات الفرعية</h5> -->
+                                            <div class="row pt-2">
+                                                <div class="col-12">
+                                                <div class="row">
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">الوزارة</label>
+                                                    <br>
+                                                <select class="form-select" id="ministry" name="ministry" required>
+                                                    <option value="" disabled selected>اختر...</option>
+                                                    <option value="">وزارة العدل</option>
+                                                    <option value="">وزارة الإقتصاد</option>
+                                                    <option value="">وزارة المالية</option>
+                                                </select>
+
+                                                </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">الإدارة العامة</label>
+                                       <select class="form-select" id="administration" name="administration" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">الإدارة العامة للمكاتب الفرعية</option>
+                                                <option value="">الإدارة العامة لحماية المستهلك والرقابة والتفتيش</option>
+                                                <option value="">الإدارة العامة للحاسوب وتكنولوجيا المعلومات</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">الدائرة</label>
+                                        <select class="form-select" id="department" name="department" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">حماية المستهلك</option>
+                                                <option value="">المعلومات</option>
+                                                <option value="">الشركات</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">القسم</label>
+                                    <select class="form-select" id="section" name="section" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">الرقابة والتفتيش</option>
+                                                <option value="">البرمجة</option>
+                                                <option value="">تسجيل الشركات</option>
+                                                <option value="">حماية المستهلك</option>
+                                            </select>
+                                    </div>
+
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">الشعبة</label>
+                                        <select class="form-select" id="division" name="division" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">إعداد الموازنة وجمع المعلومات</option>
+                                                <option value="">الوسم التجاري</option>
+                                                <option value="">حماية المستهلك</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">الوحدة</label>
+                                        <select class="form-select" id="unit" name="unit" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">وحدة المتابعة</option>
+                                                <option value="">وحدة التخطيط</option>
+                                                <option value="">وحدة البرمجة</option>
+                                                <option value="">وحدة الرقابةالداخلية</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">المعبر</label>
+                                         <select class="form-select" id="crossing" name="crossing" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">معبر العودة التجاري</option>
+                                                <option value="">معبر المنطار</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">مكان العمل</label>
+                                     <select class="form-select" id="workplace" name="workplace" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">فرع غزة</option>
+                                                <option value="">فرع الشمال</option>
+                                                <option value="">فرع الوسطى</option>
+                                                <option value="">فرع الجنوب</option>
+                                            </select>
+                                    </div>
+
+                                    <!-- <h5 class="mb-3">البيانات المالية</h5>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">اسم البنك</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">رقم الحساب</label>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">الأيبان IPAN</label>
+                                        <input type="text" class="form-control" placeholder="PS92PALS000000000000000000000" id="ibanNumber">
+                                    </div> -->
+                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="tab-pane" id="basictab3">
+                                             <div class="row pt-2">
+                                                <div class="col-12">
+                                                <div class="row">
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">الرقم الوظيفي</label>
+                                                    <input type="text" class="form-control" placeholder="الإسم" id="" name="" 
+                                                    required>
+
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                        <label class="form-label">الوظيفة</label>
+                                       <select class="form-select" id="position" name="position" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">مدير عام</option>
+                                                <option value="">مدير </option>
+                                                <option value="">رئيس قسم</option>
+                                                <option value="">موظف</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">المسمى الوظيفي</label>
+                                       <select class="form-select" id="jobtitle" name="jobtitle" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">مدير عام</option>
+                                                <option value="">نائب مدير عام</option>
+                                                <option value="">مدير دائرة</option>
+                                                <option value="">نائب مدير دائرة</option>
+                                                 <option value="">رئيس قسم</option>
+                                                  <option value="">موظف إداري أول</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">تاريخ التعيين</label>
+                                        <input type="date" class="form-control" placeholder="الإسم" id="dateofappointment" name="" 
+                                        required>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">الحالة الوظيفية</label>
+                                    <select class="form-select" id="employment status" name="employment status" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">على رأس عمله</option>
+                                                <option value="">مسافر</option>
+                                                <option value="">في إجازة مؤقتة</option>
+                                                <option value="">مفصول</option>
+                                                <option value="">متقاعد</option>
+                                                <option value="">مستقيل</option>
+                                            </select>
+                                    </div>
+
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">المسمى الإداري</label>
+                                        <select class="form-select" id="administrative title" name="administrative title" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">وكيل وزارة</option>
+                                                <option value="">وكيل وزارة مساعد</option>
+                                                <option value="">مدير عام</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">البرنامج</label>
+                                        <select class="form-select" id="program" name="program" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">موظفين غير موزعين على برامج</option>
+                                                <option value="">برنامج التطوير الإداري</option>
+                                                <option value="">برنامج التحول الرقمي</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">المعبر</label>
+                                         <select class="form-select" id="crossing" name="crossing" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">معبر العودة التجاري</option>
+                                                <option value="">معبر المنطار</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">مكان العمل</label>
+                                     <select class="form-select" id="workplace" name="workplace" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">فرع غزة</option>
+                                                <option value="">فرع الشمال</option>
+                                                <option value="">فرع الوسطى</option>
+                                                <option value="">فرع الجنوب</option>
+                                            </select>
+                                    </div>
+
+                                    <!-- <h5 class="mb-3">البيانات المالية</h5>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">اسم البنك</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">رقم الحساب</label>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">الأيبان IPAN</label>
+                                        <input type="text" class="form-control" placeholder="PS92PALS000000000000000000000" id="ibanNumber">
+                                    </div> -->
+                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="tab-pane" id="basictab4">
+                                            <div class="row pt-2">
+                                                <div class="col-12">
+                                                <div class="row">
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">التصنيف (classification)</label>
+                                                    <select class="form-select" id="classification">
+                                                    <option value="">اختر التصنيف</option>
+                                                    <option value="classified_fixed">مصنف ومثبت</option>
+                                                    <option value="classified_not_fixed">مصنف وغير مثبت</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">الفئة (category)</label>
+                                                    <select class="form-select" id="category">
+                                                    <option value="">اختر الفئة</option>
+                                                    <option value="1">الأولى</option>
+                                                    <option value="2">الثانية</option>
+                                                    <option value="3">الثالثة</option>
+                                                    </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">المسمى الوظيفي</label>
+                                       <select class="form-select" id="jobtitle" name="jobtitle" required>
+                                                <option value="" disabled selected>اختر...</option>
+                                                <option value="">مدير عام</option>
+                                                <option value="">نائب مدير عام</option>
+                                                <option value="">مدير دائرة</option>
+                                                <option value="">نائب مدير دائرة</option>
+                                                 <option value="">رئيس قسم</option>
+                                                  <option value="">موظف إداري أول</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                       <label class="form-label">الدرجة الوظيفية (grade)</label>
+                                        <select class="form-select" id="grade">
+                                        <option value="">اختر الدرجة</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
                                         </select>
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">الأقدمية (seniority)</label>
+                                        <input type="number" class="form-control" id="seniority" min="1" max="15" placeholder="ادخل رقم من 1 إلى 15">
+                                    </div>
+
+                                    <div class="mb-3 col-3">
+                                        
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                      
+                                    </div>
+                                    <div class="mb-3 col-3">
                                        
                                     </div>
-                                </div>
-                            </div> 
-                        </div>
-
-                        <div class="mb-3 col-3">
-                            <label class="form-label">رقم الجوال الأساسي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="number" class="form-control" placeholder="0594132478" id="phone1" name="phone1" required>
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label class="form-label">رقم الجوال البديل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="number" class="form-control" placeholder="0597412547" id="phone2" name="phone2" required>
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label class="form-label">الرقم الوظيفي <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="number" class="form-control" id="empid" name="empid" required>
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label class="form-label">تاريخ الميلاد <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="date" class="form-control" id="birthdate" name="birthdate" required>
-                        </div>
-                        <div class="mb-3 col-3">
-                            <label class="form-label">القسم <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <br>
-                            <select class="form-select" id="department" name="department" required>
-                                <option value="" disabled selected>اختر القسم...</option>
-                                <option value="admin">الإدارة العامة</option>
-                                <option value="finance">المالية</option>
-                                <option value="hr">الموارد البشرية</option>
-                                <option value="legal">الشؤون القانونية</option>
-                                <option value="it">تكنولوجيا المعلومات</option>
-                            </select>
-                          
-                        </div>
-                        <div class="mb-3 col-6">
-                            <label class="form-label">مكان العمل <span style="font-size: 16px; color: red; font-weight: 700;">*</span></label>
-                            <input type="text" class="form-control" id="workpos" name="workpos" required>
-                        </div>
-                        </div>
-                                                    </div> <!-- end col -->
-                                                </div> <!-- end row -->
+                                    <div class="mb-3 col-3">
+                                       
+                                    </div>
+                                    </div>
+                                                </div>
                                             </div>
-                <div class="tab-pane" id="basictab2">
-                    <h5 class="mb-3">البيانات الفرعية</h5>
-                    <div class="row pt-2">
-                        <div class="col-12">
-                            <div class="row">
-                    <div class="mb-3 col-3">
-                        <label class="form-label">المحافظة</label>
-                        <br>
-                       <select class="form-select" id="governorate" name="governorate" required>
-                        <option value="" disabled selected>اختر المحافظة...</option>
-                        <option value="jerusalem">القدس</option>
-                        <option value="ramallah">رام الله والبيرة</option>
-                        <option value="gaza">غزة</option>
-                        <option value="bethlehem">بيت لحم</option>
-                        <option value="hebron">الخليل</option>
-                        <option value="deiralbalah">ديرالبلح (الوسطى)</option>
-                        <option value="jericho">أريحا والأغوار</option>
-                        <option value="khanyounis">خانيونيس</option>
-                        <option value="nablus">نابلس</option>
-                        <option value="tubas">طوباس</option>
-                        <option value="rafah">رفح</option>
-                        <option value="tulkarm">طولكرم</option>
-                        <option value="qalqilya">قلقيلية</option>
-                        <option value="beitlahia">بيت لاهيا (الشمال)</option>
-                        <option value="salfit">سلفيت</option>
-                        <option value="jenin">جنين</option>
-                    </select>
+                                         </div> 
 
-                    </div>
-            <div class="mb-3 col-3">
-                <label class="form-label">المدينة</label>
-                <input type="text" class="form-control" placeholder="المدينة">
-            </div>
-            <div class="mb-3 col-3">
-                <label class="form-label">عنوان السكن بالتفصيل</label>
-                <input type="text" class="form-control" placeholder="السكن">
-            </div>
-            <div class="mb-3 col-3">
-                <label class="form-label">الحالة الوظيفية</label>
-               <select class="form-select" id="employmentStatus" name="employmentStatus" required>
-                        <option value="" disabled selected>اختر الحالة...</option>
-                        <option value="active">على رأس عمله</option>
-                        <option value="traveling">مسافر</option>
-                        <option value="retired">متقاعد</option>
-                        <option value="resigned">مستقيل</option>
-                        <option value="fired">مفصول</option>
-                    </select>
-            </div>
+                                          <div class="tab-pane" id="basictab5">
+                                            <div class="row pt-2">
+                                                <div class="col-12">
+                                                <div class="row">
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">المؤهل العلمي (certificate)</label>
+                                                    <select class="form-select" id="certificate">
+                                                    <option value="">اختر المؤهل العلمي</option>
+                                                    <option value="phd">دكتوراه</option>
+                                                    <option value="master">ماجستير</option>
+                                                    <option value="bachelor">بكالوريوس</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">خدمة فعلية (actual service)</label>
+                                                    <input type="number" class="form-control" id="actual_service" placeholder="ادخل رقم">
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                       <label class="form-label">ترقية (promotion)</label>
+                                       <input type="number" class="form-control" id="promotion" placeholder="ادخل رقم">
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">لأغراض الراتب (salary purposes)</label>
+                                        <input type="number" class="form-control" id="salary_purposes" placeholder="ادخل رقم">
+                                    </div>
+                                   
 
-            <div class="mb-3 col-3">
-                <label class="form-label">المسمى الوظيفي</label>
-                <input type="text" class="form-control" placeholder="">
-              </div>
-              <div class="mb-3 col-3">
-                <label class="form-label">تاريخ التعيين</label>
-                <input type="date" class="form-control">
-              </div>
-              <div class="mb-3 col-3">
-                <label class="form-label">المؤهل العلمي</label>
-                <select class="form-select" id="qualification2" name="qualification2" required>
-                        <option value="" disabled selected>اختر المؤهل...</option>
-                        <option value="bachelor">بكالوريوس</option>
-                        <option value="master">ماجستير</option>
-                        <option value="phd">دكتوراة</option>
-                        <option value="professor">بروفسور</option>
-                        <option value="diploma">دبلوم</option>
-                    </select>
-              </div>
-              <div class="mb-3 col-3">
-                <label class="form-label">المدير المباشر</label>
-               <select class="form-select" id="directManager" name="directManager" required>
-                        <option value="" disabled selected>اختر المدير...</option>
-                        <option value="ali">م.علي</option>
-                        <option value="wafaa">أ.وفاء</option>
-                        <option value="mohammad">م.محمد</option>
-                    </select>
-              </div>
+                                    <div class="mb-3 col-3">
+                                        
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                      
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                       
+                                    </div>
+                                    <div class="mb-3 col-3">
+                                       
+                                    </div>
+                                    </div>
+                                                </div>
+                                            </div>
+                                         </div> 
 
-              <h5 class="mb-3">البيانات المالية</h5>
-            <div class="mb-3 col-3">
-                <label class="form-label">اسم البنك</label>
-                <input type="number" class="form-control">
-              </div>
-            
-              <div class="mb-3 col-3">
-                <label class="form-label">رقم الحساب</label>
-                <input type="number" class="form-control">
-             </div>
-              <div class="mb-3 col-6">
-                <label class="form-label">الأيبان IPAN</label>
-                <input type="text" class="form-control" placeholder="PS92PALS000000000000000000000" id="ibanNumber">
-             </div>
-             </div>
-                        </div>
-                    </div>
-                </div> <div class="tab-pane" id="basictab3">
-                    <h5 class="mb-3">مراجعة البيانات</h5>
-                    <div class="row pt-2">
-                        <div class="col-12 text-center">
-                            <p class="fs-18 fw-bold">الرجاء مراجعة جميع البيانات المدخلة قبل الإرسال.</p>
-                            <i class="ti ti-check-circle text-success" style="font-size: 80px;"></i>
-                        </div>
-                    </div>
-                </div> </div> <div class="action-buttons">
-                 <button type="button" class="btn btn-secondary" id="prevBtn" disabled>
-                    <i class="ti ti-arrow-right me-1"></i> السابق
-                </button>
-                
-                <button type="button" class="btn add-employee-btn" id="nextBtn">
-                     التالي <i class="ti ti-arrow-left ms-1"></i>
-                </button>
-                 <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
-                    إرسال البيانات <i class="ti ti-send ms-1"></i>
-                </button>
-            </div>
+                                          <div class="tab-pane" id="basictab6">
+                                            <div class="row pt-2">
+                                                <div class="col-12">
+                                                <div class="row">
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">لجنة التقاعد (retirement committee)</label>
+                                                    <select class="form-select" id="retirement_committee">
+                                                        <option value="">اختر من القائمة</option>
+                                                        <option value="pension_fund">صندوق التقاعد الفلسطيني</option>
+                                                        <option value="government_health_insurance">التأمين الصحي الحكومي</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3 col-3">
+                                                    <label class="form-label">التجزئة (fragmentation)</label>
+                                                    <input type="number" class="form-control" id="fragmentation" placeholder="ادخل رقم">
+                                    </div>
+ 
+                                    </div>
+                                                </div>
+                                            </div>
+                                         </div> 
 
+
+                                          <div class="tab-pane" id="basictab7">
+                                            <div class="row pt-2">
+                                                <div class="col-12">
+                                                <div class="row">
+                                                    <div class="mb-3 col-3">
+                                        <label class="form-label">اسم البنك</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    
+                                    <div class="mb-3 col-3">
+                                        <label class="form-label">رقم الحساب</label>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">الأيبان IPAN</label>
+                                        <input type="text" class="form-control" placeholder="PS92PALS000000000000000000000" id="ibanNumber">
+                                    </div>
+                                 
+                                   
+                                   
+
+                                    
+                                                 </div>
+                                                </div>
+                                            </div>
+                                         </div> 
+
+                                          <div class="tab-pane" id="basictab8">
+                                            <div class="row pt-2">
+                                                <div class="col-12">
+                                                 <h4 class="mb-3 fw-bold">الإنهاء والمراجعة</h4>
+
+        <div class="alert alert-info">
+            <strong>يرجى مراجعة جميع البيانات قبل الإرسال.</strong><br>
+            تأكد من صحة المعلومات المدخلة في جميع الخطوات السابقة.
         </div>
-    </form>
-</div>
+
+                                                </div>
+                                            </div>
+                                         </div> 
+
+
+
+                                    </div> 
+                                        
+                                        <div class="action-buttons">
+                                        <button type="button" class="btn btn-secondary" id="prevBtn" disabled>
+                                            <i class="ti ti-arrow-right me-1"></i> السابق
+                                        </button>
+                                        
+                                        <button type="button" class="btn add-employee-btn" id="nextBtn">
+                                            التالي <i class="ti ti-arrow-left ms-1"></i>
+                                        </button>
+                                        <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                                            إرسال البيانات <i class="ti ti-send ms-1"></i>
+                                        </button>
+                                        </div>
+
+                                </div>
+                            </form>
+                        </div>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
+
+
+
             <div class="footer d-flex align-items-center justify-content-center flex-column  row-gap-2 border-top py-2 px-3">
                 <p class="text-dark mb-0">2025 &copy; <a href="javascript:void(0);" class="link-primary">جميع الحقوق محفوظة </a> "Ministry Of National Economy"</p>
             </div>
             </div>
         </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
 
     <script src="js/vendor.min.js"></script>
 
@@ -778,7 +1149,7 @@ button, .btn {
     let currentStep = 1; // الخطوة الحالية
 
     function updateWizardUI() {
-        let progress = ((currentStep - 1) / 2) * 100;
+        let progress = ((currentStep ) / 8) * 100;
         progressBar.style.width = progress + '%';
         progressBar.setAttribute('aria-valuenow', progress);
 
@@ -799,7 +1170,7 @@ button, .btn {
 
         prevBtn.disabled = (currentStep === 1); // تعطيل زر السابق في الخطوة الأولى
         
-        if (currentStep === 3) {
+        if (currentStep === 8) {
             nextBtn.style.display = 'none'; // إخفاء التالي
             submitBtn.style.display = 'inline-block'; // إظهار إرسال
         } else {
@@ -810,7 +1181,7 @@ button, .btn {
 
     // دالة الانتقال للخطوة التالية
     function nextStep() {
-        if (currentStep < 3) {
+        if (currentStep < 8) {
             if (!validateCurrentStep(currentStep)) {
                 alert("الرجاء إدخال جميع الحقول المطلوبة قبل المتابعة.");
                 return;
@@ -840,14 +1211,13 @@ button, .btn {
             const family = document.getElementById('family').value.trim();
             const idNumber = document.getElementById('idNumber').value.trim();
             const birthdate = document.getElementById('idNumber').value.trim();
-            const empid = document.getElementById('empid').value.trim();
-            const department = document.getElementById('department').value.trim();
+            // const empid = document.getElementById('empid').value.trim();
+            // const department = document.getElementById('department').value.trim();
             const gender = document.getElementById('gender').value.trim();
             const maritalStatus = document.getElementById('maritalStatus').value.trim();
             
             return firstname !== '' && secondname !== '' && thirdname !='' && family !='' && idNumber !== '' && phone1 !== ''
-            && phone2 !== '' && birthdate !== ''
-            && empid !== '' && department !== '' && gender !== '' && maritalStatus !== '' ;
+            && phone2 !== '' && birthdate !== '' && gender !== '' && maritalStatus !== '' && workpos !=='' ;
         }
         return true; 
     }
@@ -899,5 +1269,27 @@ button, .btn {
        return false;
     }
 </script>
+<script>
+    // تعريف المدن لكل محافظة
+    const cities = {
+      gaza: ["غزة", "خان يونس", "رفح"],
+      ramallah: ["رام الله", "البيرة", "دير غسانة"],
+      hebron: ["الخليل", "الحلحول", "يطا"]
+    };
+
+    // عند تغيير المحافظة
+    $('#governorate').change(function() {
+      const governorate = $(this).val();
+      const cityDropdown = $('#city');
+      cityDropdown.empty(); // مسح الخيارات القديمة
+      cityDropdown.append('<option value="">اختر المدينة</option>'); // خيار افتراضي
+      
+      if(governorate !== "") {
+        cities[governorate].forEach(function(city) {
+          cityDropdown.append(`<option value="${city}">${city}</option>`);
+        });
+      }
+    });
+  </script>
     </body>
 </html>
