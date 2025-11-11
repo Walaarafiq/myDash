@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="نظام إدارة معلومات الموظفين الإداري والمالي">
+    <meta name="keywords" content="تسجيل دخول، موظفين، إدارة، خدمات إلكترونية">
+    <title>تسجيل الدخول - نظام إدارة الموظفين</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dreams Technologies">
+    
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="plugins/tabler-icons/tabler-icons.min.css">
+    <link rel="stylesheet" href="plugins/simplebar/simplebar.min.css">
+    <link rel="stylesheet" href="css/style.css" id="app-style">
+
+    <style>
+        .content {
+            position: relative;
+            z-index: 2;
+            color: rgb(57, 57, 57);
+            text-align: center;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            width: 85%; 
+            max-width: 1200px; 
+            padding: 20px;
+        }
+
+        .login-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            height: 100%; 
+        }
+
+        .immg1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 20px; 
+        }
+
+        .immg1 img {
+            max-width: 95%; 
+            height: auto;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5eda1, #D4AF37);
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+            background-image: url('img/backimg.png');
+            background-repeat: no-repeat;
+            background-size: cover; 
+            background-position: center;
+        }
+
+        .blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(8px); 
+            background-color: rgba(255, 235, 59, 0.4); 
+            z-index: 1;
+        }
+
+        .in {
+            text-align: right; 
+            width: 100%; 
+            margin-bottom: 20px;
+            border: 1px solid rgb(162, 161, 161);
+            height: 45px; 
+            border-radius: 8px;
+            padding: 0 15px; 
+            font-size: 18px;
+        }
+        
+        input[type="password"] {
+            text-align: right;
+        }
+
+        .login {
+            width: 100%;
+            height: 50px;
+            border: none; 
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #D4AF37; 
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .login:hover {
+            background-color: #dfba42;
+        }
+
+        ::placeholder {
+            font-size: 18px;
+            color: #999;
+        }
+
+        .tit0 {
+            font-weight: 700;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .tit1 {
+            font-weight: 500;
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: #282727;
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .form-check {
+            text-align: right;
+        }
+        
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-password a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            color: #777;
+            margin-top: 30px;
+        }
+        
+        /* ترتيب العناصر في الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .content {
+                width: 95%;
+                padding: 10px;
+            }
+            .immg1 {
+                display: none; 
+            }
+            .immg0 {
+                width: 100%;
+            }
+            .login-box {
+                padding: 25px;
+            }
+        }
+    </style>
+
+    <script>
+        function onlyNumbers(event) {
+            const charCode = (event.which) ? event.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="blur"></div>
+    <div class="content">
+        <div class="row w-100 justify-content-center">
+            <div class="immg1 col-12 col-md-6 d-none d-md-flex">
+                <img src="img/mainlogo.png" alt="شعار النظام">
+            </div>
+            <div class="immg0 col-12 col-md-6">
+                <div class="login-box">
+                    <h5 class="tit0">نظام إدارة معلومات الموظفين الإداري والمالي</h5>
+                    <h4 class="tit1">الخدمات الإلكترونية للموظفين</h4>
+                    
+                    <form action="#" method="POST"> 
+                        
+                        <input type="text" class="in" placeholder="رقم الهوية" id="idNumber" name="idNumber" required
+                            maxlength="9" 
+                            onkeypress="return onlyNumbers(event)" 
+                            title="يُرجى إدخال 9 أرقام فقط لرقم الهوية">
+                        
+                        <input type="password" class="in" placeholder="كلمة المرور" id="password" name="password" required>
+                        
+                        <div class="form-options">
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    تذكرني  
+                                </label>
+                            </div>
+                            
+                            <div class="forgot-password">
+                                <a href="forgot-password.html">هل نسيت كلمة المرور؟</a>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn login" id="loginButton">
+                           تسجيل الدخول
+                        </button>
+                    </form>
+                    
+                    <p class="footer-text" style="margin-top: 50px;">جميع الحقوق محفوظة لدى وزارة الإقتصاد</p>
+                    <p class="footer-text" style="margin-top: -10px;">يرجى التأكد من دخولك للبوابة عبر الرابط الرسمي للحفاظ على أمن معلوماتك</p>
+                </div>
+            </div>
+
+            
+        </div> 
+    </div>
+</body>
+</html>

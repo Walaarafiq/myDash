@@ -26122,3 +26122,7 @@ img {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+:root, [data-bs-theme=light] {
+      --pr-font-sans-serif: "Tajawal", sans-serif;
+}
