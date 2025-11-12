@@ -1,0 +1,22 @@
+{
+  "liveServer.settings.port": 5501,
+
+  // 🔹 إضافة إعدادات التنسيق التلقائي
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+
+  // 🔹 إعدادات stylelint (لترتيب CSS أبجدياً)
+  "stylelint.validate": ["css", "scss"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true,
+    "source.organizeImports": true
+  }
+}
