@@ -10,7 +10,8 @@
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
 
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.fixAll.stylelint": "explicit",
+    "source.organizeImports": "explicit"
   },
 
   // 🔹 إعدادات stylelint (لترتيب CSS أبجدياً)
