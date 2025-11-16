@@ -100,6 +100,30 @@
         color: var(--muted);
       }
 
+      /* جدول الموظفين – يظهر تقريباً 5 صفوف ثم سكرول */
+      #employeesTableWrapper {
+        max-height: 320px;
+        overflow-y: auto;
+      }
+
+      /* كارت خاص للجدول مع مارجن إضافي تحت */
+      .card-employees {
+        margin-bottom: 2.5rem;
+      }
+
+      /* مجموعة تشيك بوكس للفلاتر مع سكرول داخلي */
+      .filter-checkbox-group {
+        border: 1px solid var(--line);
+        border-radius: 0.75rem;
+        padding: 8px 10px;
+        max-height: 180px;
+        overflow-y: auto;
+        background: #fff;
+      }
+      .filter-checkbox-group .form-check-label {
+        font-size: 13px;
+      }
+
       @media (max-width: 992px) {
         .header-search {
           display: none !important;
@@ -210,26 +234,19 @@
       </header>
 
       <!-- ====== الشريط الجانبي ====== -->
-
       <div class="sidebar" id="sidebar">
-        <!-- Start Logo -->
         <div class="sidebar-logo">
           <div>
-            <!-- Logo Normal -->
             <a href="index.html" class="logo logo-normal">
               <h5 class="fw-bold text-center mt-1" style="color: #d4af37">
                 وزارة الإقتصاد الوطني
               </h5>
             </a>
-
-            <!-- Logo Small -->
             <a href="" class="logo-small">
               <button class="btn btn-light">
                 <i class="fa-solid fa-bars"></i>
               </button>
             </a>
-
-            <!-- Logo Dark -->
             <a href="index.html" class="dark-logo">
               <h5 class="fw-bold text-center text-primary mt-1">
                 وزارة الإقتصاد الوطني
@@ -239,15 +256,11 @@
           <button class="sidenav-toggle-btn btn p-0" id="toggle_btn">
             <i class="ti ti-chevron-left-pipe"></i>
           </button>
-
-          <!-- Sidebar Menu Close -->
           <button class="sidebar-close">
             <i class="ti ti-x align-middle"></i>
           </button>
         </div>
-        <!-- End Logo -->
 
-        <!-- Sidenav Menu -->
         <div class="sidebar-inner" data-simplebar>
           <div id="sidebar-menu" class="sidebar-menu">
             <ul>
@@ -326,14 +339,12 @@
                   <li class="submenu">
                     <a href="javascript:void(0);" class="subdrop">
                       <i class="ti ti-users"></i><span>الأبناء</span>
-                      <!-- <span class="menu-arrow"></span> -->
                     </a>
                   </li>
 
                   <li class="submenu">
                     <a href="javascript:void(0);" class="subdrop">
                       <i class="ti ti-users"></i><span>الزوجات</span>
-                      <!-- <span class="menu-arrow"></span> -->
                     </a>
                   </li>
 
@@ -356,7 +367,6 @@
                     <a href="javascript:void(0);" class="subdrop">
                       <i class="ti ti-currency-dollar"></i
                       ><span>قسائم الرواتب</span>
-                      <!-- <span class="menu-arrow"></span> -->
                     </a>
                   </li>
 
@@ -379,14 +389,12 @@
                     <a href="javascript:void(0);" class="subdrop">
                       <i class="ti ti-chart-line"></i
                       ><span>الإحصائيات والتقارير</span>
-                      <!-- <span class="menu-arrow"></span> -->
                     </a>
                   </li>
 
                   <li class="submenu">
                     <a href="javascript:void(0);" class="subdrop">
                       <i class="ti ti-printer"></i><span>التصدير والطباعة</span>
-                      <!-- <span class="menu-arrow"></span> -->
                     </a>
                   </li>
                 </ul>
@@ -398,7 +406,7 @@
 
       <!-- ====== المحتوى الرئيسي ====== -->
       <div class="page-wrapper">
-        <div class="content pb-0" id="employees-page">
+        <div class="content pb-4" id="employees-page">
           <div class="row g-3 align-items-center mb-2">
             <div class="col-12 col-md">
               <h3 class="m-0">بيانات الموظفين</h3>
@@ -409,7 +417,7 @@
             </div>
             <div class="col-12 col-md-auto">
               <button class="btn btn-gold">
-                <a href="addEmployee.html" class="">
+                <a href="addEmployee.html">
                   <i class="ti ti-user-plus ms-1"></i> أضِف موظف
                 </a>
               </button>
@@ -419,137 +427,194 @@
           <!-- الفلاتر -->
           <div class="card mb-3">
             <div class="card-body">
-              <div class="row g-2">
-                <div class="row g-2 mb-2">
-                  <div class="col-12 col-lg-4">
-                    <label class="filter-label">بحث سريع</label>
-                    <input
-                      id="q"
-                      type="search"
-                      class="form-control"
-                      placeholder="ابحث بالاسم أو رقم الهوية…"
-                    />
+              <div class="row g-2 align-items-end">
+                <div class="col-12 col-lg-4 mb-2">
+                  <label class="filter-label">بحث سريع</label>
+                  <input
+                    id="q"
+                    type="search"
+                    class="form-control"
+                    placeholder="ابحث بالاسم أو رقم الهوية…"
+                  />
+                </div>
+
+                <div class="col-12 col-lg-3 mb-2">
+                  <label class="filter-label d-block">&nbsp;</label>
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary w-100"
+                    data-bs-toggle="modal"
+                    data-bs-target="#filtersModal"
+                  >
+                    <i class="ti ti-filter ms-1"></i> فلترة متقدمة
+                  </button>
+                </div>
+
+                <div class="col-12 col-lg-3 mb-2">
+                  <label class="filter-label d-block">&nbsp;</label>
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary w-100"
+                    id="resetAll"
+                  >
+                    إعادة تعيين الكل
+                  </button>
+                </div>
+              </div>
+
+              <div id="chips" class="mt-3"></div>
+            </div>
+          </div>
+
+          <!-- Modal الفلاتر المتقدمة -->
+          <div
+            class="modal fade"
+            id="filtersModal"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">الفلاتر المتقدمة</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="إغلاق"
+                  ></button>
+                </div>
+
+                <div class="modal-body">
+                  <p class="text-muted small mb-3">
+                    يمكنك اختيار أكثر من عنصر من كل مجموعة فلاتر.
+                  </p>
+
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label class="filter-label d-block mb-1">الوزارة</label>
+                      <div
+                        id="filterMinistryGroup"
+                        class="filter-checkbox-group small"
+                      ></div>
+                      <small class="text-muted d-block mt-1"
+                        >يمكن اختيار أكثر من وزارة</small
+                      >
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="filter-label d-block mb-1">الإدارة</label>
+                      <div
+                        id="filterDirectorateGroup"
+                        class="filter-checkbox-group small"
+                      ></div>
+                      <small class="text-muted d-block mt-1"
+                        >الإدارات تتغير حسب الوزارات المختارة</small
+                      >
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="filter-label d-block mb-1"
+                        >المسمى الوظيفي</label
+                      >
+                      <div
+                        id="filterJobTitleGroup"
+                        class="filter-checkbox-group small"
+                      ></div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="filter-label d-block mb-1">المدينة</label>
+                      <div
+                        id="filterCityGroup"
+                        class="filter-checkbox-group small"
+                      ></div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="filter-label d-block mb-1"
+                        >مكان العمل</label
+                      >
+                      <div
+                        id="filterWorkplaceGroup"
+                        class="filter-checkbox-group small"
+                      ></div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="filter-label d-block mb-1"
+                        >الحالة الوظيفية</label
+                      >
+                      <div
+                        id="filterStatusGroup"
+                        class="filter-checkbox-group small"
+                      >
+                        <div class="form-check mb-1">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="active"
+                            id="status_active"
+                          />
+                          <label class="form-check-label" for="status_active">
+                            على رأس عمله
+                          </label>
+                        </div>
+                        <div class="form-check mb-1">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="suspended"
+                            id="status_suspended"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="status_suspended"
+                          >
+                            موقوف
+                          </label>
+                        </div>
+                        <div class="form-check mb-1">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="retired"
+                            id="status_retired"
+                          />
+                          <label class="form-check-label" for="status_retired">
+                            متقاعد
+                          </label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">الوزارة</label>
-                  <select id="ministry" class="form-select">
-                    <option value="">الكل</option>
-                    <option>وزارة الإقتصاد الوطني</option>
-                    <option>وزارة المالية</option>
-                    <option>وزارة العمل</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">الإدارة</label>
-                  <select id="directorate" class="form-select">
-                    <option value="">الكل</option>
-                    <option>الإدارة العامة للموارد البشرية</option>
-                    <option>إدارة الشؤون الإدارية</option>
-                    <option>إدارة المعابر</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">المعبر</label>
-                  <select id="crossing" class="form-select">
-                    <option value="">الكل</option>
-                    <option>معبر رفح</option>
-                    <option>كرم أبو سالم</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">المسمى الوظيفي</label>
-                  <select id="jobTitle" class="form-select">
-                    <option value="">الكل</option>
-                    <option>مبرمج</option>
-                    <option>محاسب</option>
-                    <option>موارد بشرية</option>
-                    <option>موظف معابر</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">الحالة الاجتماعية</label>
-                  <select id="marital" class="form-select">
-                    <option value="">الكل</option>
-                    <option>أعزب</option>
-                    <option>متزوج</option>
-                    <option>مطلق</option>
-                    <option>أرمل</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">المدينة</label>
-                  <select id="city" class="form-select">
-                    <option value="">الكل</option>
-                    <option>رام الله</option>
-                    <option>غزة</option>
-                    <option>الخليل</option>
-                    <option>نابلس</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">الدائرة</label>
-                  <select id="department" class="form-select">
-                    <option value="">الكل</option>
-                    <option>دائرة تكنولوجيا المعلومات</option>
-                    <option>دائرة الشؤون الإدارية</option>
-                    <option>دائرة المالية</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">القسم</label>
-                  <select id="section" class="form-select">
-                    <option value="">الكل</option>
-                    <option>قسم التطوير</option>
-                    <option>قسم الدعم الفني</option>
-                    <option>قسم الرواتب</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">الشعبة</label>
-                  <select id="unit" class="form-select">
-                    <option value="">الكل</option>
-                    <option>شعبة الويب</option>
-                    <option>شعبة الشبكات</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">مكان العمل</label>
-                  <select id="workplace" class="form-select">
-                    <option value="">الكل</option>
-                    <option>المقر الرئيسي – رام الله</option>
-                    <option>غزة – الوزارة</option>
-                    <option>المعابر</option>
-                  </select>
-                </div>
-                <div class="col-6 col-lg-2">
-                  <label class="filter-label">الحالة الوظيفية</label>
-                  <select id="statuss" class="form-select">
-                    <option value="">الكل</option>
-                    <option value="active">على رأس عمله</option>
-                    <option value="suspended">موقوف</option>
-                    <option value="retired">متقاعد</option>
-                  </select>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    id="clearAdvancedFilters"
+                  >
+                    مسح الفلاتر
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-gold"
+                    id="applyAdvancedFilters"
+                    data-bs-dismiss="modal"
+                  >
+                    تطبيق
+                  </button>
                 </div>
               </div>
-
-              <div class="d-flex gap-2 mt-3 flex-wrap">
-                <button class="btn btn-gold" id="applyFilters">
-                  تطبيق المرشحات
-                </button>
-                <button class="btn btn-outline-secondary" id="resetFilters">
-                  إعادة تعيين
-                </button>
-              </div>
-              <div id="chips" class="mt-2"></div>
             </div>
           </div>
 
           <!-- الجدول -->
-          <div class="card">
+          <div class="card card-employees">
             <div class="card-body p-0">
-              <div class="table-responsive">
+              <div class="table-responsive" id="employeesTableWrapper">
                 <table
                   class="table table-hover mb-0 align-middle"
                   id="employeesTable"
@@ -564,16 +629,12 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- 1 -->
                     <tr
                       data-ministry="وزارة الإقتصاد الوطني"
                       data-directorate="الإدارة العامة للموارد البشرية"
-                      data-crossing=""
                       data-jobtitle="مبرمج"
-                      data-marital="متزوج"
                       data-city="رام الله"
-                      data-department="دائرة تكنولوجيا المعلومات"
-                      data-section="قسم التطوير"
-                      data-unit="شعبة الويب"
                       data-workplace="المقر الرئيسي – رام الله"
                       data-status="active"
                     >
@@ -585,16 +646,12 @@
                         <span class="status status--active">على رأس عمله</span>
                       </td>
                     </tr>
+                    <!-- 2 -->
                     <tr
                       data-ministry="وزارة الإقتصاد الوطني"
                       data-directorate="إدارة المعابر"
-                      data-crossing="معبر رفح"
                       data-jobtitle="موظف معابر"
-                      data-marital="أعزب"
                       data-city="غزة"
-                      data-department="دائرة الشؤون الإدارية"
-                      data-section="قسم الدعم الفني"
-                      data-unit="شعبة الشبكات"
                       data-workplace="المعابر"
                       data-status="suspended"
                     >
@@ -606,16 +663,12 @@
                         <span class="status status--suspended">موقوف</span>
                       </td>
                     </tr>
+                    <!-- 3 -->
                     <tr
                       data-ministry="وزارة المالية"
                       data-directorate="إدارة الشؤون الإدارية"
-                      data-crossing=""
                       data-jobtitle="محاسب"
-                      data-marital="متزوج"
                       data-city="نابلس"
-                      data-department="دائرة المالية"
-                      data-section="قسم الرواتب"
-                      data-unit=""
                       data-workplace="نابلس"
                       data-status="retired"
                     >
@@ -625,6 +678,210 @@
                       <td>MF-22011</td>
                       <td>
                         <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <!-- 4 -->
+                    <tr
+                      data-ministry="وزارة الصحة"
+                      data-directorate="الإدارة العامة للمستشفيات"
+                      data-jobtitle="طبيب عام"
+                      data-city="غزة"
+                      data-workplace="مجمع الشفاء الطبي"
+                      data-status="active"
+                    >
+                      <td>سامي خليل عبد القادر</td>
+                      <td>404567890</td>
+                      <td>مجمع الشفاء الطبي</td>
+                      <td>MOH-33421</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <!-- 5 -->
+                    <tr
+                      data-ministry="وزارة التربية والتعليم"
+                      data-directorate="الإدارة العامة للتعليم العام"
+                      data-jobtitle="معلم"
+                      data-city="الخليل"
+                      data-workplace="مدرسة الخليل الأساسية"
+                      data-status="active"
+                    >
+                      <td>محمود إبراهيم أبو عيشة</td>
+                      <td>405678901</td>
+                      <td>مدرسة الخليل الأساسية</td>
+                      <td>MOE-88210</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <!-- 6 -->
+                    <tr
+                      data-ministry="وزارة الزراعة"
+                      data-directorate="الإدارة العامة للإرشاد الزراعي"
+                      data-jobtitle="مهندس زراعي"
+                      data-city="جنين"
+                      data-workplace="مديرية زراعة جنين"
+                      data-status="active"
+                    >
+                      <td>يوسف جهاد نمر جرار</td>
+                      <td>406789012</td>
+                      <td>مديرية زراعة جنين</td>
+                      <td>MOA-11023</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <!-- 7 -->
+                    <tr
+                      data-ministry="وزارة الداخلية"
+                      data-directorate="الإدارة العامة للأحوال المدنية"
+                      data-jobtitle="موظف سجلات"
+                      data-city="رام الله"
+                      data-workplace="أحوال مدنية رام الله"
+                      data-status="suspended"
+                    >
+                      <td>حسن عدنان عبد الهادي</td>
+                      <td>407890123</td>
+                      <td>أحوال مدنية رام الله</td>
+                      <td>MOI-56203</td>
+                      <td>
+                        <span class="status status--suspended">موقوف</span>
+                      </td>
+                    </tr>
+                    <!-- 8 -->
+                    <tr
+                      data-ministry="وزارة العمل"
+                      data-directorate="الإدارة العامة للتفتيش"
+                      data-jobtitle="مفتش عمل"
+                      data-city="طولكرم"
+                      data-workplace="مديرية عمل طولكرم"
+                      data-status="active"
+                    >
+                      <td>باسل خالد حسن عودة</td>
+                      <td>408901234</td>
+                      <td>مديرية عمل طولكرم</td>
+                      <td>MOL-77201</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <!-- 9 -->
+                    <tr
+                      data-ministry="وزارة الإتصالات وتكنولوجيا المعلومات"
+                      data-directorate="الإدارة العامة للأنظمة"
+                      data-jobtitle="مهندس شبكات"
+                      data-city="غزة"
+                      data-workplace="الوزارة – غزة"
+                      data-status="active"
+                    >
+                      <td>رائد محمد سليم العكلوك</td>
+                      <td>409012345</td>
+                      <td>الوزارة – غزة</td>
+                      <td>MIT-30011</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <!-- 10 -->
+                    <tr
+                      data-ministry="وزارة النقل والمواصلات"
+                      data-directorate="الإدارة العامة للترخيص"
+                      data-jobtitle="موظف ترخيص"
+                      data-city="نابلس"
+                      data-workplace="مديرية ترخيص نابلس"
+                      data-status="retired"
+                    >
+                      <td>جمال سليم نمر قاسم</td>
+                      <td>410123456</td>
+                      <td>مديرية ترخيص نابلس</td>
+                      <td>MOT-11890</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <!-- 11 -->
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="الإدارة العامة للرواتب"
+                      data-jobtitle="مراقب مالي"
+                      data-city="رام الله"
+                      data-workplace="وزارة المالية – رام الله"
+                      data-status="active"
+                    >
+                      <td>ليث عبد الله خليل أبو شنب</td>
+                      <td>411234567</td>
+                      <td>وزارة المالية – رام الله</td>
+                      <td>MOF-99021</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <!-- 12 -->
+                    <tr
+                      data-ministry="وزارة الصحة"
+                      data-directorate="الإدارة العامة للرعاية الأولية"
+                      data-jobtitle="ممرض قانوني"
+                      data-city="غزة"
+                      data-workplace="مركز الرعاية الأولية – الشاطئ"
+                      data-status="active"
+                    >
+                      <td>إبراهيم أحمد عبد الرازق</td>
+                      <td>412345678</td>
+                      <td>مركز الرعاية الأولية – الشاطئ</td>
+                      <td>MOH-55090</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <!-- 13 -->
+                    <tr
+                      data-ministry="وزارة التربية والتعليم"
+                      data-directorate="الإدارة العامة للتعليم المهني"
+                      data-jobtitle="مرشد تربوي"
+                      data-city="بيت لحم"
+                      data-workplace="مدرسة بيت لحم الثانوية"
+                      data-status="suspended"
+                    >
+                      <td>معتز فؤاد خميس الأطرش</td>
+                      <td>413456789</td>
+                      <td>مدرسة بيت لحم الثانوية</td>
+                      <td>MOE-66340</td>
+                      <td>
+                        <span class="status status--suspended">موقوف</span>
+                      </td>
+                    </tr>
+                    <!-- 14 -->
+                    <tr
+                      data-ministry="وزارة الزراعة"
+                      data-directorate="الإدارة العامة للثروة الحيوانية"
+                      data-jobtitle="فني بيطري"
+                      data-city="قلقيلية"
+                      data-workplace="مديرية زراعة قلقيلية"
+                      data-status="retired"
+                    >
+                      <td>نادر محمود عبد الكريم ريان</td>
+                      <td>414567890</td>
+                      <td>مديرية زراعة قلقيلية</td>
+                      <td>MOA-22107</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <!-- 15 -->
+                    <tr
+                      data-ministry="وزارة الإقتصاد الوطني"
+                      data-directorate="الإدارة العامة لحماية المستهلك"
+                      data-jobtitle="مفتش تمويني"
+                      data-city="طولكرم"
+                      data-workplace="مكتب وزارة الإقتصاد – طولكرم"
+                      data-status="active"
+                    >
+                      <td>عمر تيسير محمد ربيع</td>
+                      <td>415678901</td>
+                      <td>مكتب وزارة الإقتصاد – طولكرم</td>
+                      <td>MNE-77531</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
                       </td>
                     </tr>
                   </tbody>
@@ -657,110 +914,268 @@
     <script src="js/app.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- سكربت الفلترة (Vanilla JS) -->
+    <!-- سكربت الفلترة مع التشيك بوكس -->
     <script>
       (function () {
+        const rows = Array.from(
+          document.querySelectorAll("#employeesTable tbody tr")
+        );
+
         const els = {
           q: document.getElementById("q"),
-          ministry: document.getElementById("ministry"),
-          directorate: document.getElementById("directorate"),
-          crossing: document.getElementById("crossing"),
-          jobTitle: document.getElementById("jobTitle"),
-          marital: document.getElementById("marital"),
-          city: document.getElementById("city"),
-          department: document.getElementById("department"),
-          section: document.getElementById("section"),
-          unit: document.getElementById("unit"),
-          workplace: document.getElementById("workplace"),
-          status: document.getElementById("statuss"),
-          apply: document.getElementById("applyFilters"),
-          reset: document.getElementById("resetFilters"),
           chips: document.getElementById("chips"),
-          rows: Array.from(
-            document.querySelectorAll("#employeesTable tbody tr")
-          ),
+          groups: {
+            ministries: document.getElementById("filterMinistryGroup"),
+            directorates: document.getElementById("filterDirectorateGroup"),
+            jobTitles: document.getElementById("filterJobTitleGroup"),
+            cities: document.getElementById("filterCityGroup"),
+            workplaces: document.getElementById("filterWorkplaceGroup"),
+            statuses: document.getElementById("filterStatusGroup"),
+          },
+          applyAdvanced: document.getElementById("applyAdvancedFilters"),
+          clearAdvanced: document.getElementById("clearAdvancedFilters"),
+          resetAll: document.getElementById("resetAll"),
         };
+
+        function getCheckedValues(container) {
+          if (!container) return [];
+          return Array.from(
+            container.querySelectorAll('input[type="checkbox"]:checked')
+          ).map((cb) => cb.value);
+        }
+
+        function clearGroup(container) {
+          if (!container) return;
+          container
+            .querySelectorAll('input[type="checkbox"]')
+            .forEach((cb) => (cb.checked = false));
+        }
+
+        function createCheckbox(container, value, label, namePrefix, index) {
+          const id = namePrefix + "_" + index;
+          const wrapper = document.createElement("div");
+          wrapper.className = "form-check mb-1";
+
+          const input = document.createElement("input");
+          input.className = "form-check-input";
+          input.type = "checkbox";
+          input.value = value;
+          input.id = id;
+
+          const lab = document.createElement("label");
+          lab.className = "form-check-label";
+          lab.setAttribute("for", id);
+          lab.textContent = label || value;
+
+          wrapper.appendChild(input);
+          wrapper.appendChild(lab);
+          container.appendChild(wrapper);
+        }
+
+        function populateGroup(container, values, namePrefix) {
+          if (!container) return;
+          const prevSelected = getCheckedValues(container);
+          container.innerHTML = "";
+          values.forEach((v, i) => {
+            if (!v) return;
+            createCheckbox(container, v, v, namePrefix, i);
+          });
+          container.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+            if (prevSelected.includes(cb.value)) cb.checked = true;
+          });
+        }
+
+        const sets = {
+          ministries: new Set(),
+          cities: new Set(),
+          workplaces: new Set(),
+          jobTitles: new Set(),
+          directoratesByMinistry: new Map(),
+        };
+
+        // تجميع بيانات الفلاتر من الصفوف
+        rows.forEach((tr) => {
+          const { ministry, directorate, city, workplace, jobtitle } =
+            tr.dataset;
+
+          if (ministry) sets.ministries.add(ministry);
+          if (city) sets.cities.add(city);
+          if (workplace) sets.workplaces.add(workplace);
+          if (jobtitle) sets.jobTitles.add(jobtitle);
+
+          if (ministry && directorate) {
+            if (!sets.directoratesByMinistry.has(ministry)) {
+              sets.directoratesByMinistry.set(ministry, new Set());
+            }
+            sets.directoratesByMinistry.get(ministry).add(directorate);
+          }
+        });
+
+        function updateDirectoratesOptions() {
+          const container = els.groups.directorates;
+          if (!container) return;
+
+          const selectedMinistries = getCheckedValues(els.groups.ministries);
+          const dirSet = new Set();
+
+          if (!selectedMinistries.length) {
+            sets.directoratesByMinistry.forEach((dirs) => {
+              dirs.forEach((d) => dirSet.add(d));
+            });
+          } else {
+            selectedMinistries.forEach((m) => {
+              const dirs = sets.directoratesByMinistry.get(m);
+              if (dirs) dirs.forEach((d) => dirSet.add(d));
+            });
+          }
+
+          populateGroup(container, Array.from(dirSet), "directorate");
+        }
+
+        function initAdvancedOptions() {
+          populateGroup(
+            els.groups.ministries,
+            Array.from(sets.ministries),
+            "ministry"
+          );
+          populateGroup(els.groups.cities, Array.from(sets.cities), "city");
+          populateGroup(
+            els.groups.workplaces,
+            Array.from(sets.workplaces),
+            "workplace"
+          );
+          populateGroup(
+            els.groups.jobTitles,
+            Array.from(sets.jobTitles),
+            "jobTitle"
+          );
+          updateDirectoratesOptions();
+        }
 
         const getFilters = () => ({
           q: (els.q?.value || "").trim().toLowerCase(),
-          ministry: els.ministry.value,
-          directorate: els.directorate.value,
-          crossing: els.crossing.value,
-          jobTitle: els.jobTitle.value,
-          marital: els.marital.value,
-          city: els.city.value,
-          department: els.department.value,
-          section: els.section.value,
-          unit: els.unit.value,
-          workplace: els.workplace.value,
-          status: els.status.value,
+          ministries: getCheckedValues(els.groups.ministries),
+          directorates: getCheckedValues(els.groups.directorates),
+          jobTitles: getCheckedValues(els.groups.jobTitles),
+          cities: getCheckedValues(els.groups.cities),
+          workplaces: getCheckedValues(els.groups.workplaces),
+          statuses: getCheckedValues(els.groups.statuses),
         });
 
         function apply() {
           const f = getFilters();
-          els.rows.forEach((tr) => {
+
+          rows.forEach((tr) => {
             const text = tr.innerText.toLowerCase();
             const passText = !f.q || text.includes(f.q);
+
+            const passMinistry =
+              !f.ministries.length ||
+              f.ministries.includes(tr.dataset.ministry || "");
+            const passDirectorate =
+              !f.directorates.length ||
+              f.directorates.includes(tr.dataset.directorate || "");
+            const passJobTitle =
+              !f.jobTitles.length ||
+              f.jobTitles.includes(tr.dataset.jobtitle || "");
+            const passCity =
+              !f.cities.length || f.cities.includes(tr.dataset.city || "");
+            const passWorkplace =
+              !f.workplaces.length ||
+              f.workplaces.includes(tr.dataset.workplace || "");
+            const passStatus =
+              !f.statuses.length ||
+              f.statuses.includes(tr.dataset.status || "");
+
             const pass =
               passText &&
-              (!f.ministry || tr.dataset.ministry === f.ministry) &&
-              (!f.directorate || tr.dataset.directorate === f.directorate) &&
-              (!f.crossing || tr.dataset.crossing === f.crossing) &&
-              (!f.jobTitle || tr.dataset.jobtitle === f.jobTitle) &&
-              (!f.marital || tr.dataset.marital === f.marital) &&
-              (!f.city || tr.dataset.city === f.city) &&
-              (!f.department || tr.dataset.department === f.department) &&
-              (!f.section || tr.dataset.section === f.section) &&
-              (!f.unit || tr.dataset.unit === f.unit) &&
-              (!f.workplace || tr.dataset.workplace === f.workplace) &&
-              (!f.status || tr.dataset.status === f.status);
+              passMinistry &&
+              passDirectorate &&
+              passJobTitle &&
+              passCity &&
+              passWorkplace &&
+              passStatus;
+
             tr.style.display = pass ? "" : "none";
           });
-          renderChips(f);
-        }
 
-        function reset() {
-          document
-            .querySelectorAll(
-              '#employees-page .form-select, #employees-page input[type="search"]'
-            )
-            .forEach((el) => (el.value = ""));
-          apply();
+          renderChips(f);
         }
 
         function renderChips(f) {
           const labels = {
             q: "بحث",
-            ministry: "الوزارة",
-            directorate: "الإدارة",
-            crossing: "المعبر",
-            jobTitle: "المسمى الوظيفي",
-            marital: "الحالة الاجتماعية",
-            city: "المدينة",
-            department: "الدائرة",
-            section: "القسم",
-            unit: "الشعبة",
-            workplace: "مكان العمل",
-            status: "الحالة الوظيفية",
+            ministries: "الوزارة",
+            directorates: "الإدارة",
+            jobTitles: "المسمى الوظيفي",
+            cities: "المدينة",
+            workplaces: "مكان العمل",
+            statuses: "الحالة الوظيفية",
           };
           els.chips.innerHTML = "";
-          Object.entries(f).forEach(([k, v]) => {
-            if (v) {
-              const chip = document.createElement("span");
-              chip.className = "chip";
-              chip.innerHTML = "<b>" + labels[k] + ":</b> " + v;
-              chip.addEventListener("click", () => {
-                (k === "q" ? els.q : els[k]).value = "";
-                apply();
-              });
-              els.chips.appendChild(chip);
-            }
+
+          Object.entries(f).forEach(([key, value]) => {
+            const hasValue = key === "q" ? !!value : value.length > 0;
+            if (!hasValue) return;
+
+            const chip = document.createElement("span");
+            chip.className = "chip";
+
+            const textValue =
+              key === "q"
+                ? value
+                : value.length > 3
+                ? value.slice(0, 3).join("، ") + "..."
+                : value.join("، ");
+
+            chip.innerHTML = "<b>" + labels[key] + ":</b> " + textValue;
+
+            chip.addEventListener("click", () => {
+              if (key === "q") {
+                els.q.value = "";
+              } else {
+                const map = {
+                  ministries: els.groups.ministries,
+                  directorates: els.groups.directorates,
+                  jobTitles: els.groups.jobTitles,
+                  cities: els.groups.cities,
+                  workplaces: els.groups.workplaces,
+                  statuses: els.groups.statuses,
+                };
+                clearGroup(map[key]);
+              }
+              apply();
+            });
+
+            els.chips.appendChild(chip);
           });
         }
 
-        els.apply.addEventListener("click", apply);
-        els.reset.addEventListener("click", reset);
-        els.q.addEventListener("input", apply);
+        function resetAll() {
+          if (els.q) els.q.value = "";
+          Object.values(els.groups).forEach(clearGroup);
+          apply();
+        }
+
+        if (els.q) els.q.addEventListener("input", apply);
+        if (els.applyAdvanced)
+          els.applyAdvanced.addEventListener("click", apply);
+        if (els.clearAdvanced) {
+          els.clearAdvanced.addEventListener("click", () => {
+            Object.values(els.groups).forEach(clearGroup);
+            apply();
+          });
+        }
+        if (els.resetAll) els.resetAll.addEventListener("click", resetAll);
+        if (els.groups.ministries) {
+          els.groups.ministries.addEventListener(
+            "change",
+            updateDirectoratesOptions
+          );
+        }
+
+        initAdvancedOptions();
+        apply();
       })();
     </script>
   </body>

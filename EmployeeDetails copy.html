@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>بيانات الموظفين | وزارة الإقتصاد الوطني</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/apple-icon.png" />
+
+    <!-- Bootstrap & Fonts & Icons -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="plugins/fontawesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="plugins/tabler-icons/tabler-icons.min.css" />
+    <link rel="stylesheet" href="plugins/simplebar/simplebar.min.css" />
+    <link rel="stylesheet" href="css/style.css" id="app-style" />
+
+    <!-- صفحة الموظفين  -->
+    <style>
+      :root {
+        --gold: #d4af37;
+        --gold-600: #c19a1a;
+        --muted: #6b7280;
+        --line: #e7eaee;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Tajawal", system-ui, -apple-system, Segoe UI, Roboto,
+          Arial;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+
+      /* زر ذهبي موحد */
+      .btn-gold {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #111;
+        font-weight: 700;
+      }
+      .btn-gold:hover {
+        background: var(--gold-600);
+        border-color: var(--gold-600);
+        color: #111;
+      }
+
+      /* شارة الحالة */
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+      }
+      .status--active {
+        background: rgba(24, 169, 87, 0.12);
+        color: #157347;
+      }
+      .status--suspended {
+        background: rgba(234, 179, 8, 0.12);
+        color: #8b6a05;
+      }
+      .status--retired {
+        background: rgba(239, 68, 68, 0.1);
+        color: #9b1c1c;
+      }
+
+      /* وسوم الفلاتر المطبقة */
+      #chips .chip {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        padding: 4px 10px;
+        border: 1px dashed var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 12px;
+        color: #4b5563;
+        margin: 4px 6px 0 0;
+        cursor: pointer;
+      }
+
+      .filter-label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 992px) {
+        .header-search {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <!-- ====== الهيدر ====== -->
+      <header class="navbar-header">
+        <div class="page-container topbar-menu">
+          <div class="d-flex align-items-center gap-2">
+            <a href="index.html" class="logo" aria-label="الرئيسية">
+              <span class="logo-light">
+                <span class="logo-lg"
+                  ><img src="img/logo.svg" alt="شعار"
+                /></span>
+                <span class="logo-sm"
+                  ><img src="img/logo-small.svg" alt="شعار صغير"
+                /></span>
+              </span>
+              <span class="logo-dark">
+                <span class="logo-lg"
+                  ><img src="img/logo-white.svg" alt="شعار داكن"
+                /></span>
+              </span>
+            </a>
+
+            <a
+              id="mobile_btn"
+              class="mobile-btn"
+              href="#sidebar"
+              aria-label="فتح القائمة الجانبية"
+            >
+              <i class="ti ti-menu-deep fs-24"></i>
+            </a>
+
+            <button
+              class="sidenav-toggle-btn btn p-0"
+              id="toggle_btn2"
+              aria-label="طي الشريط الجانبي"
+            >
+              <i class="ti ti-chevron-left-pipe"></i>
+            </button>
+
+            <div
+              class="me-auto d-lg-flex d-none align-items-center header-search"
+            >
+              <img
+                src="img/69033f476c6467000e30771b.png"
+                width="100"
+                height="100"
+                alt="هوية النظام"
+              />
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="header-item">
+              <a href="#" class="btn me-2 topbar-link" aria-label="تسجيل الخروج"
+                ><i class="ti ti-logout fs-16"></i
+              ></a>
+            </div>
+
+            <div class="header-item dropdown me-2">
+              <button
+                class="topbar-link btn btn-icon dropdown-toggle drop-arrow-none"
+                data-bs-toggle="dropdown"
+                data-bs-offset="0,24"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="التنبيهات"
+              >
+                <i class="ti ti-bell fs-16 animate-ring"></i>
+                <span class="notification-badge"></span>
+              </button>
+              <div
+                class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg"
+                style="min-height: 300px"
+              >
+                <div class="p-2 border-bottom">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h6 class="m-0 fs-16 fw-semibold">Notifications</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="header-item">
+              <a href="#" class="btn me-2 topbar-link" aria-label="الرسائل"
+                ><i class="ti ti-message fs-16"></i
+              ></a>
+            </div>
+            <a href="#" class="btn topbar-link" aria-label="الملف الشخصي"
+              ><img
+                src="img/users/user-04.jpg"
+                alt="user photo"
+                width="45"
+                height="45"
+                style="border-radius: 50%"
+            /></a>
+          </div>
+        </div>
+      </header>
+
+      <!-- ====== الشريط الجانبي ====== -->
+
+      <div class="sidebar" id="sidebar">
+        <!-- Start Logo -->
+        <div class="sidebar-logo">
+          <div>
+            <!-- Logo Normal -->
+            <a href="index.html" class="logo logo-normal">
+              <h5 class="fw-bold text-center mt-1" style="color: #d4af37">
+                وزارة الإقتصاد الوطني
+              </h5>
+            </a>
+
+            <!-- Logo Small -->
+            <a href="" class="logo-small">
+              <button class="btn btn-light">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+            </a>
+
+            <!-- Logo Dark -->
+            <a href="index.html" class="dark-logo">
+              <h5 class="fw-bold text-center text-primary mt-1">
+                وزارة الإقتصاد الوطني
+              </h5>
+            </a>
+          </div>
+          <button class="sidenav-toggle-btn btn p-0" id="toggle_btn">
+            <i class="ti ti-chevron-left-pipe"></i>
+          </button>
+
+          <!-- Sidebar Menu Close -->
+          <button class="sidebar-close">
+            <i class="ti ti-x align-middle"></i>
+          </button>
+        </div>
+        <!-- End Logo -->
+
+        <!-- Sidenav Menu -->
+        <div class="sidebar-inner" data-simplebar>
+          <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+              <li class="menu-title"><span>الرئيسية</span></li>
+              <li>
+                <ul>
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="active subdrop">
+                      <i class="ti ti-user"></i><span>شؤون الموظفين</span>
+                      <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="EmployeeDetails.html" class="active"
+                          >بيانات الموظفين</a
+                        >
+                      </li>
+                      <li><a href="index.html">عقود دائمة</a></li>
+                      <li><a href="index.html">متقاعدين</a></li>
+                      <li><a href="index.html">مسافرين</a></li>
+                    </ul>
+                  </li>
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="active subdrop">
+                      <i class="ti ti-list"></i><span>الثوابت والقوائم</span>
+                      <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                      <li><a href="index.html" class="active">الوزارات</a></li>
+                      <li><a href="index-2.html">التصنيفات العامة</a></li>
+                      <li><a href="index-3.html">الفئات</a></li>
+                      <li><a href="index-4.html">السلم الوظيفي</a></li>
+                      <li><a href="index-3.html">الدرجات</a></li>
+                      <li><a href="index-3.html">الأقدمية</a></li>
+                      <li><a href="index-3.html">التجزئة</a></li>
+                      <li><a href="index-3.html">البرامج</a></li>
+                      <li><a href="index-3.html">أماكن العمل</a></li>
+                      <li><a href="index-3.html">المسميات الإدارية</a></li>
+                      <li><a href="index-3.html">الترقيات</a></li>
+                      <li><a href="index-3.html">لجان التقاعد</a></li>
+                      <li><a href="index-3.html">الشهادات</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-files"></i><span>المرفقات</span>
+                      <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="index.html" class="active">بيانات الموظفين</a>
+                      </li>
+                      <li><a href="index-2.html">عقود دائمة</a></li>
+                      <li><a href="index-3.html">متقاعدين</a></li>
+                      <li><a href="index-4.html">مسافرين</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-building"></i
+                      ><span>المعلومات البنكية</span>
+                      <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="index.html" class="active">بيانات الموظفين</a>
+                      </li>
+                      <li><a href="index-2.html">عقود دائمة</a></li>
+                      <li><a href="index-3.html">متقاعدين</a></li>
+                      <li><a href="index-4.html">مسافرين</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-users"></i><span>الأبناء</span>
+                      <!-- <span class="menu-arrow"></span> -->
+                    </a>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-users"></i><span>الزوجات</span>
+                      <!-- <span class="menu-arrow"></span> -->
+                    </a>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-wallet"></i><span>العلاوات</span>
+                      <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="index.html" class="active">بيانات الموظفين</a>
+                      </li>
+                      <li><a href="index-2.html">عقود دائمة</a></li>
+                      <li><a href="index-3.html">متقاعدين</a></li>
+                      <li><a href="index-4.html">مسافرين</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-currency-dollar"></i
+                      ><span>قسائم الرواتب</span>
+                      <!-- <span class="menu-arrow"></span> -->
+                    </a>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-settings"></i><span>عمليات النظام</span>
+                      <span class="menu-arrow"></span>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="index.html" class="active">بيانات الموظفين</a>
+                      </li>
+                      <li><a href="index-2.html">عقود دائمة</a></li>
+                      <li><a href="index-3.html">متقاعدين</a></li>
+                      <li><a href="index-4.html">مسافرين</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-chart-line"></i
+                      ><span>الإحصائيات والتقارير</span>
+                      <!-- <span class="menu-arrow"></span> -->
+                    </a>
+                  </li>
+
+                  <li class="submenu">
+                    <a href="javascript:void(0);" class="subdrop">
+                      <i class="ti ti-printer"></i><span>التصدير والطباعة</span>
+                      <!-- <span class="menu-arrow"></span> -->
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== المحتوى الرئيسي ====== -->
+      <div class="page-wrapper">
+        <div class="content pb-0" id="employees-page">
+          <div class="row g-3 align-items-center mb-2">
+            <div class="col-12 col-md">
+              <h3 class="m-0">بيانات الموظفين</h3>
+              <small class="text-muted fw-bold"
+                >ابحث وفلتر حسب الوزارة، الإدارة، المعبر، المسمى، الحالة
+                الاجتماعية، المدينة…</small
+              >
+            </div>
+            <div class="col-12 col-md-auto">
+              <button class="btn btn-gold">
+                <a href="addEmployee.html" class="">
+                  <i class="ti ti-user-plus ms-1"></i> أضِف موظف
+                </a>
+              </button>
+            </div>
+          </div>
+
+          <!-- الفلاتر -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row g-2">
+                <div class="row g-2 mb-2">
+                  <div class="col-12 col-lg-4">
+                    <label class="filter-label">بحث سريع</label>
+                    <input
+                      id="q"
+                      type="search"
+                      class="form-control"
+                      placeholder="ابحث بالاسم أو رقم الهوية…"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">الوزارة</label>
+                  <select id="ministry" class="form-select">
+                    <option value="">الكل</option>
+                    <option>وزارة الإقتصاد الوطني</option>
+                    <option>وزارة المالية</option>
+                    <option>وزارة العمل</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">الإدارة</label>
+                  <select id="directorate" class="form-select">
+                    <option value="">الكل</option>
+                    <option>الإدارة العامة للموارد البشرية</option>
+                    <option>إدارة الشؤون الإدارية</option>
+                    <option>إدارة المعابر</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">المعبر</label>
+                  <select id="crossing" class="form-select">
+                    <option value="">الكل</option>
+                    <option>معبر رفح</option>
+                    <option>كرم أبو سالم</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">المسمى الوظيفي</label>
+                  <select id="jobTitle" class="form-select">
+                    <option value="">الكل</option>
+                    <option>مبرمج</option>
+                    <option>محاسب</option>
+                    <option>موارد بشرية</option>
+                    <option>موظف معابر</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">الحالة الاجتماعية</label>
+                  <select id="marital" class="form-select">
+                    <option value="">الكل</option>
+                    <option>أعزب</option>
+                    <option>متزوج</option>
+                    <option>مطلق</option>
+                    <option>أرمل</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">المدينة</label>
+                  <select id="city" class="form-select">
+                    <option value="">الكل</option>
+                    <option>رام الله</option>
+                    <option>غزة</option>
+                    <option>الخليل</option>
+                    <option>نابلس</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">الدائرة</label>
+                  <select id="department" class="form-select">
+                    <option value="">الكل</option>
+                    <option>دائرة تكنولوجيا المعلومات</option>
+                    <option>دائرة الشؤون الإدارية</option>
+                    <option>دائرة المالية</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">القسم</label>
+                  <select id="section" class="form-select">
+                    <option value="">الكل</option>
+                    <option>قسم التطوير</option>
+                    <option>قسم الدعم الفني</option>
+                    <option>قسم الرواتب</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">الشعبة</label>
+                  <select id="unit" class="form-select">
+                    <option value="">الكل</option>
+                    <option>شعبة الويب</option>
+                    <option>شعبة الشبكات</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">مكان العمل</label>
+                  <select id="workplace" class="form-select">
+                    <option value="">الكل</option>
+                    <option>المقر الرئيسي – رام الله</option>
+                    <option>غزة – الوزارة</option>
+                    <option>المعابر</option>
+                  </select>
+                </div>
+                <div class="col-6 col-lg-2">
+                  <label class="filter-label">الحالة الوظيفية</label>
+                  <select id="statuss" class="form-select">
+                    <option value="">الكل</option>
+                    <option value="active">على رأس عمله</option>
+                    <option value="suspended">موقوف</option>
+                    <option value="retired">متقاعد</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 mt-3 flex-wrap">
+                <button class="btn btn-gold" id="applyFilters">
+                  تطبيق المرشحات
+                </button>
+                <button class="btn btn-outline-secondary" id="resetFilters">
+                  إعادة تعيين
+                </button>
+              </div>
+              <div id="chips" class="mt-2"></div>
+            </div>
+          </div>
+
+          <!-- الجدول -->
+          <div class="card">
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table
+                  class="table table-hover mb-0 align-middle"
+                  id="employeesTable"
+                >
+                  <thead class="table-light">
+                    <tr class="text-muted">
+                      <th>اسم الموظف رباعي</th>
+                      <th>رقم الهوية</th>
+                      <th>مكان العمل</th>
+                      <th>الرقم الوظيفي</th>
+                      <th>الحالة الوظيفية</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      data-ministry="وزارة الإقتصاد الوطني"
+                      data-directorate="الإدارة العامة للموارد البشرية"
+                      data-crossing=""
+                      data-jobtitle="مبرمج"
+                      data-marital="متزوج"
+                      data-city="رام الله"
+                      data-department="دائرة تكنولوجيا المعلومات"
+                      data-section="قسم التطوير"
+                      data-unit="شعبة الويب"
+                      data-workplace="المقر الرئيسي – رام الله"
+                      data-status="active"
+                    >
+                      <td>محمد أحمد محمود سالم</td>
+                      <td>401234567</td>
+                      <td>المقر الرئيسي – رام الله</td>
+                      <td>NE-10234</td>
+                      <td>
+                        <span class="status status--active">على رأس عمله</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة الإقتصاد الوطني"
+                      data-directorate="إدارة المعابر"
+                      data-crossing="معبر رفح"
+                      data-jobtitle="موظف معابر"
+                      data-marital="أعزب"
+                      data-city="غزة"
+                      data-department="دائرة الشؤون الإدارية"
+                      data-section="قسم الدعم الفني"
+                      data-unit="شعبة الشبكات"
+                      data-workplace="المعابر"
+                      data-status="suspended"
+                    >
+                      <td>أحمد رائد محمد طموس</td>
+                      <td>402345678</td>
+                      <td>المعابر</td>
+                      <td>NE-11567</td>
+                      <td>
+                        <span class="status status--suspended">موقوف</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-ministry="وزارة المالية"
+                      data-directorate="إدارة الشؤون الإدارية"
+                      data-crossing=""
+                      data-jobtitle="محاسب"
+                      data-marital="متزوج"
+                      data-city="نابلس"
+                      data-department="دائرة المالية"
+                      data-section="قسم الرواتب"
+                      data-unit=""
+                      data-workplace="نابلس"
+                      data-status="retired"
+                    >
+                      <td>خليل يوسف محمد بركات</td>
+                      <td>403456789</td>
+                      <td>نابلس</td>
+                      <td>MF-22011</td>
+                      <td>
+                        <span class="status status--retired">متقاعد</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center text-muted small mt-2">
+            جميع الحقوق محفوظة © 2025 — Ministry Of National Economy
+          </div>
+        </div>
+
+        <footer
+          class="footer d-flex align-items-center justify-content-center flex-column row-gap-2 border-top py-2 px-3"
+        >
+          <p class="text-dark mb-0">
+            2025 &copy;
+            <a href="#" class="link-primary">جميع الحقوق محفوظة</a> "Ministry Of
+            National Economy"
+          </p>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="plugins/simplebar/simplebar.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- سكربت الفلترة (Vanilla JS) -->
+    <script>
+      (function () {
+        const els = {
+          q: document.getElementById("q"),
+          ministry: document.getElementById("ministry"),
+          directorate: document.getElementById("directorate"),
+          crossing: document.getElementById("crossing"),
+          jobTitle: document.getElementById("jobTitle"),
+          marital: document.getElementById("marital"),
+          city: document.getElementById("city"),
+          department: document.getElementById("department"),
+          section: document.getElementById("section"),
+          unit: document.getElementById("unit"),
+          workplace: document.getElementById("workplace"),
+          status: document.getElementById("statuss"),
+          apply: document.getElementById("applyFilters"),
+          reset: document.getElementById("resetFilters"),
+          chips: document.getElementById("chips"),
+          rows: Array.from(
+            document.querySelectorAll("#employeesTable tbody tr")
+          ),
+        };
+
+        const getFilters = () => ({
+          q: (els.q?.value || "").trim().toLowerCase(),
+          ministry: els.ministry.value,
+          directorate: els.directorate.value,
+          crossing: els.crossing.value,
+          jobTitle: els.jobTitle.value,
+          marital: els.marital.value,
+          city: els.city.value,
+          department: els.department.value,
+          section: els.section.value,
+          unit: els.unit.value,
+          workplace: els.workplace.value,
+          status: els.status.value,
+        });
+
+        function apply() {
+          const f = getFilters();
+          els.rows.forEach((tr) => {
+            const text = tr.innerText.toLowerCase();
+            const passText = !f.q || text.includes(f.q);
+            const pass =
+              passText &&
+              (!f.ministry || tr.dataset.ministry === f.ministry) &&
+              (!f.directorate || tr.dataset.directorate === f.directorate) &&
+              (!f.crossing || tr.dataset.crossing === f.crossing) &&
+              (!f.jobTitle || tr.dataset.jobtitle === f.jobTitle) &&
+              (!f.marital || tr.dataset.marital === f.marital) &&
+              (!f.city || tr.dataset.city === f.city) &&
+              (!f.department || tr.dataset.department === f.department) &&
+              (!f.section || tr.dataset.section === f.section) &&
+              (!f.unit || tr.dataset.unit === f.unit) &&
+              (!f.workplace || tr.dataset.workplace === f.workplace) &&
+              (!f.status || tr.dataset.status === f.status);
+            tr.style.display = pass ? "" : "none";
+          });
+          renderChips(f);
+        }
+
+        function reset() {
+          document
+            .querySelectorAll(
+              '#employees-page .form-select, #employees-page input[type="search"]'
+            )
+            .forEach((el) => (el.value = ""));
+          apply();
+        }
+
+        function renderChips(f) {
+          const labels = {
+            q: "بحث",
+            ministry: "الوزارة",
+            directorate: "الإدارة",
+            crossing: "المعبر",
+            jobTitle: "المسمى الوظيفي",
+            marital: "الحالة الاجتماعية",
+            city: "المدينة",
+            department: "الدائرة",
+            section: "القسم",
+            unit: "الشعبة",
+            workplace: "مكان العمل",
+            status: "الحالة الوظيفية",
+          };
+          els.chips.innerHTML = "";
+          Object.entries(f).forEach(([k, v]) => {
+            if (v) {
+              const chip = document.createElement("span");
+              chip.className = "chip";
+              chip.innerHTML = "<b>" + labels[k] + ":</b> " + v;
+              chip.addEventListener("click", () => {
+                (k === "q" ? els.q : els[k]).value = "";
+                apply();
+              });
+              els.chips.appendChild(chip);
+            }
+          });
+        }
+
+        els.apply.addEventListener("click", apply);
+        els.reset.addEventListener("click", reset);
+        els.q.addEventListener("input", apply);
+      })();
+    </script>
+  </body>
+</html>
