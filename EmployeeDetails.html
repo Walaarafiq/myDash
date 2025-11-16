@@ -45,7 +45,6 @@
         font-weight: 700;
       }
 
-      /* زر ذهبي موحد */
       .btn-gold {
         background: var(--gold);
         border-color: var(--gold);
@@ -58,7 +57,6 @@
         color: #111;
       }
 
-      /* شارة الحالة */
       .status {
         display: inline-flex;
         align-items: center;
@@ -80,7 +78,6 @@
         color: #9b1c1c;
       }
 
-      /* وسوم الفلاتر المطبقة */
       #chips .chip {
         display: inline-flex;
         gap: 6px;
@@ -100,18 +97,16 @@
         color: var(--muted);
       }
 
-      /* جدول الموظفين – يظهر تقريباً 5 صفوف ثم سكرول */
+      /* سكرول للجدول (يعرض تقريباً 5 صفوف) */
       #employeesTableWrapper {
         max-height: 320px;
         overflow-y: auto;
       }
 
-      /* كارت خاص للجدول مع مارجن إضافي تحت */
       .card-employees {
         margin-bottom: 2.5rem;
       }
 
-      /* مجموعة تشيك بوكس للفلاتر مع سكرول داخلي */
       .filter-checkbox-group {
         border: 1px solid var(--line);
         border-radius: 0.75rem;
@@ -611,9 +606,178 @@
             </div>
           </div>
 
+          <!-- Modal تأكيد الحذف -->
+          <div
+            class="modal fade"
+            id="deleteConfirmModal"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">تأكيد الحذف</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="إغلاق"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    هل أنت متأكد أنك تريد حذف الموظف
+                    <span id="deleteEmployeeName" class="fw-bold"></span>؟
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    إلغاء
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="confirmDeleteBtn"
+                  >
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal تعديل الموظف -->
+          <div
+            class="modal fade"
+            id="editEmployeeModal"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">تعديل بيانات الموظف</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="إغلاق"
+                  ></button>
+                </div>
+                <form id="editEmployeeForm">
+                  <div class="modal-body">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label">اسم الموظف رباعي</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="editName"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">رقم الهوية</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="editIdNumber"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label">الوزارة</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="editMinistry"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">الإدارة</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="editDirectorate"
+                        />
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label">المسمى الوظيفي</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="editJobTitle"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">المدينة</label>
+                        <input type="text" class="form-control" id="editCity" />
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label">مكان العمل</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="editWorkplace"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">الرقم الوظيفي</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="editJobNumber"
+                        />
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label">الحالة الوظيفية</label>
+                        <select class="form-select" id="editStatus" required>
+                          <option value="active">على رأس عمله</option>
+                          <option value="suspended">موقوف</option>
+                          <option value="retired">متقاعد</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      إلغاء
+                    </button>
+                    <button type="submit" class="btn btn-gold">تعديل</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
           <!-- الجدول -->
           <div class="card card-employees">
             <div class="card-body p-0">
+              <div
+                class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom"
+              >
+                <span class="small text-muted">نتائج الموظفين</span>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-sm"
+                  id="exportEmployees"
+                >
+                  <i class="ti ti-table-export ms-1"></i> تصدير إكسل
+                </button>
+              </div>
+
               <div class="table-responsive" id="employeesTableWrapper">
                 <table
                   class="table table-hover mb-0 align-middle"
@@ -626,10 +790,11 @@
                       <th>مكان العمل</th>
                       <th>الرقم الوظيفي</th>
                       <th>الحالة الوظيفية</th>
+                      <th>الإجراءات</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- 1 -->
+                    <!-- 15 موظف لبيان السكرول -->
                     <tr
                       data-ministry="وزارة الإقتصاد الوطني"
                       data-directorate="الإدارة العامة للموارد البشرية"
@@ -645,8 +810,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 2 -->
+
                     <tr
                       data-ministry="وزارة الإقتصاد الوطني"
                       data-directorate="إدارة المعابر"
@@ -662,8 +841,22 @@
                       <td>
                         <span class="status status--suspended">موقوف</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 3 -->
+
                     <tr
                       data-ministry="وزارة المالية"
                       data-directorate="إدارة الشؤون الإدارية"
@@ -679,8 +872,22 @@
                       <td>
                         <span class="status status--retired">متقاعد</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 4 -->
+
                     <tr
                       data-ministry="وزارة الصحة"
                       data-directorate="الإدارة العامة للمستشفيات"
@@ -696,8 +903,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 5 -->
+
                     <tr
                       data-ministry="وزارة التربية والتعليم"
                       data-directorate="الإدارة العامة للتعليم العام"
@@ -713,8 +934,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 6 -->
+
                     <tr
                       data-ministry="وزارة الزراعة"
                       data-directorate="الإدارة العامة للإرشاد الزراعي"
@@ -730,8 +965,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 7 -->
+
                     <tr
                       data-ministry="وزارة الداخلية"
                       data-directorate="الإدارة العامة للأحوال المدنية"
@@ -747,8 +996,22 @@
                       <td>
                         <span class="status status--suspended">موقوف</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 8 -->
+
                     <tr
                       data-ministry="وزارة العمل"
                       data-directorate="الإدارة العامة للتفتيش"
@@ -764,8 +1027,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 9 -->
+
                     <tr
                       data-ministry="وزارة الإتصالات وتكنولوجيا المعلومات"
                       data-directorate="الإدارة العامة للأنظمة"
@@ -781,8 +1058,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 10 -->
+
                     <tr
                       data-ministry="وزارة النقل والمواصلات"
                       data-directorate="الإدارة العامة للترخيص"
@@ -798,8 +1089,22 @@
                       <td>
                         <span class="status status--retired">متقاعد</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 11 -->
+
                     <tr
                       data-ministry="وزارة المالية"
                       data-directorate="الإدارة العامة للرواتب"
@@ -815,8 +1120,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 12 -->
+
                     <tr
                       data-ministry="وزارة الصحة"
                       data-directorate="الإدارة العامة للرعاية الأولية"
@@ -832,8 +1151,22 @@
                       <td>
                         <span class="status status--active">على رأس عمله</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 13 -->
+
                     <tr
                       data-ministry="وزارة التربية والتعليم"
                       data-directorate="الإدارة العامة للتعليم المهني"
@@ -849,8 +1182,22 @@
                       <td>
                         <span class="status status--suspended">موقوف</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 14 -->
+
                     <tr
                       data-ministry="وزارة الزراعة"
                       data-directorate="الإدارة العامة للثروة الحيوانية"
@@ -866,8 +1213,22 @@
                       <td>
                         <span class="status status--retired">متقاعد</span>
                       </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- 15 -->
+
                     <tr
                       data-ministry="وزارة الإقتصاد الوطني"
                       data-directorate="الإدارة العامة لحماية المستهلك"
@@ -882,6 +1243,20 @@
                       <td>MNE-77531</td>
                       <td>
                         <span class="status status--active">على رأس عمله</span>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary ms-1 btn-edit"
+                        >
+                          تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger btn-delete"
+                        >
+                          حذف
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -914,16 +1289,23 @@
     <script src="js/app.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- سكربت الفلترة مع التشيك بوكس -->
+    <!-- مكتبة Excel الحقيقية -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+    <!-- سكربت الفلترة + التصدير + الحذف + التعديل -->
     <script>
       (function () {
-        const rows = Array.from(
+        let rows = Array.from(
           document.querySelectorAll("#employeesTable tbody tr")
         );
 
         const els = {
           q: document.getElementById("q"),
           chips: document.getElementById("chips"),
+          exportBtn: document.getElementById("exportEmployees"),
+          tbody: document.querySelector("#employeesTable tbody"),
+          deleteName: document.getElementById("deleteEmployeeName"),
+          confirmDeleteBtn: document.getElementById("confirmDeleteBtn"),
           groups: {
             ministries: document.getElementById("filterMinistryGroup"),
             directorates: document.getElementById("filterDirectorateGroup"),
@@ -935,6 +1317,25 @@
           applyAdvanced: document.getElementById("applyAdvancedFilters"),
           clearAdvanced: document.getElementById("clearAdvancedFilters"),
           resetAll: document.getElementById("resetAll"),
+        };
+
+        let currentDeleteRow = null;
+        let currentEditRow = null;
+
+        const editModalEl = document.getElementById("editEmployeeModal");
+        const deleteModalEl = document.getElementById("deleteConfirmModal");
+
+        const editFields = {
+          form: document.getElementById("editEmployeeForm"),
+          name: document.getElementById("editName"),
+          idNumber: document.getElementById("editIdNumber"),
+          ministry: document.getElementById("editMinistry"),
+          directorate: document.getElementById("editDirectorate"),
+          jobTitle: document.getElementById("editJobTitle"),
+          city: document.getElementById("editCity"),
+          workplace: document.getElementById("editWorkplace"),
+          jobNumber: document.getElementById("editJobNumber"),
+          status: document.getElementById("editStatus"),
         };
 
         function getCheckedValues(container) {
@@ -993,7 +1394,6 @@
           directoratesByMinistry: new Map(),
         };
 
-        // تجميع بيانات الفلاتر من الصفوف
         rows.forEach((tr) => {
           const { ministry, directorate, city, workplace, jobtitle } =
             tr.dataset;
@@ -1066,6 +1466,7 @@
           const f = getFilters();
 
           rows.forEach((tr) => {
+            if (!tr.isConnected) return;
             const text = tr.innerText.toLowerCase();
             const passText = !f.q || text.includes(f.q);
 
@@ -1157,6 +1558,183 @@
           apply();
         }
 
+        // تصدير النتائج إلى Excel حقيقي (XLSX)
+        function exportToExcel() {
+          const table = document.getElementById("employeesTable");
+          if (!table) return;
+
+          const workbook = XLSX.utils.book_new();
+          const exportData = [];
+
+          // الهيدر بدون عمود الإجراءات
+          const headers = Array.from(table.querySelectorAll("thead th"))
+            .slice(0, -1)
+            .map((th) => th.textContent.trim());
+
+          exportData.push(headers);
+
+          // الصفوف الظاهرة فقط
+          rows.forEach((tr) => {
+            if (!tr.isConnected || tr.style.display === "none") return;
+            const cells = tr.querySelectorAll("td");
+            const row = [];
+            for (let i = 0; i < cells.length - 1; i++) {
+              row.push(cells[i].innerText.trim());
+            }
+            exportData.push(row);
+          });
+
+          if (exportData.length === 1) {
+            alert("لا توجد بيانات للتصدير حسب الفلاتر الحالية.");
+            return;
+          }
+
+          const sheet = XLSX.utils.aoa_to_sheet(exportData);
+          sheet["!rtl"] = true; // اتجاه عربي
+          sheet["!cols"] = headers.map(() => ({ wch: 25 }));
+
+          XLSX.utils.book_append_sheet(workbook, sheet, "Employees");
+          XLSX.writeFile(workbook, "employees_filtered.xlsx");
+        }
+
+        function statusHtml(code) {
+          if (code === "active")
+            return '<span class="status status--active">على رأس عمله</span>';
+          if (code === "suspended")
+            return '<span class="status status--suspended">موقوف</span>';
+          if (code === "retired")
+            return '<span class="status status--retired">متقاعد</span>';
+          return "";
+        }
+
+        // أزرار الحذف والتعديل
+        if (els.tbody) {
+          els.tbody.addEventListener("click", (e) => {
+            const btn = e.target.closest("button");
+            if (!btn) return;
+            const tr = btn.closest("tr");
+            if (!tr) return;
+
+            if (btn.classList.contains("btn-delete")) {
+              currentDeleteRow = tr;
+              if (els.deleteName) {
+                els.deleteName.textContent = tr.cells[0].innerText.trim();
+              }
+              const modal = new bootstrap.Modal(deleteModalEl);
+              modal.show();
+            } else if (btn.classList.contains("btn-edit")) {
+              currentEditRow = tr;
+
+              editFields.name.value = tr.cells[0].innerText.trim();
+              editFields.idNumber.value = tr.cells[1].innerText.trim();
+              editFields.workplace.value = tr.cells[2].innerText.trim();
+              editFields.jobNumber.value = tr.cells[3].innerText.trim();
+
+              editFields.ministry.value = tr.dataset.ministry || "";
+              editFields.directorate.value = tr.dataset.directorate || "";
+              editFields.jobTitle.value = tr.dataset.jobtitle || "";
+              editFields.city.value = tr.dataset.city || "";
+              editFields.status.value = tr.dataset.status || "active";
+
+              const modal = new bootstrap.Modal(editModalEl);
+              modal.show();
+            }
+          });
+        }
+
+        // تأكيد الحذف
+        if (els.confirmDeleteBtn) {
+          els.confirmDeleteBtn.addEventListener("click", () => {
+            if (!currentDeleteRow) return;
+            currentDeleteRow.remove();
+            rows = rows.filter((r) => r !== currentDeleteRow);
+            currentDeleteRow = null;
+            const modal = bootstrap.Modal.getInstance(deleteModalEl);
+            if (modal) modal.hide();
+            apply();
+          });
+        }
+
+        // حفظ التعديل
+        if (editFields.form) {
+          editFields.form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (!currentEditRow) return;
+
+            currentEditRow.cells[0].innerText = editFields.name.value.trim();
+            currentEditRow.cells[1].innerText =
+              editFields.idNumber.value.trim();
+            currentEditRow.cells[2].innerText =
+              editFields.workplace.value.trim();
+            currentEditRow.cells[3].innerText =
+              editFields.jobNumber.value.trim();
+
+            currentEditRow.dataset.ministry = editFields.ministry.value.trim();
+            currentEditRow.dataset.directorate =
+              editFields.directorate.value.trim();
+            currentEditRow.dataset.jobtitle = editFields.jobTitle.value.trim();
+            currentEditRow.dataset.city = editFields.city.value.trim();
+            currentEditRow.dataset.workplace =
+              editFields.workplace.value.trim();
+            currentEditRow.dataset.status = editFields.status.value;
+
+            currentEditRow.cells[4].innerHTML = statusHtml(
+              editFields.status.value
+            );
+
+            const newMinistry = currentEditRow.dataset.ministry;
+            if (newMinistry && !sets.ministries.has(newMinistry)) {
+              sets.ministries.add(newMinistry);
+              populateGroup(
+                els.groups.ministries,
+                Array.from(sets.ministries),
+                "ministry"
+              );
+            }
+
+            const newCity = currentEditRow.dataset.city;
+            if (newCity && !sets.cities.has(newCity)) {
+              sets.cities.add(newCity);
+              populateGroup(els.groups.cities, Array.from(sets.cities), "city");
+            }
+
+            const newWorkplace = currentEditRow.dataset.workplace;
+            if (newWorkplace && !sets.workplaces.has(newWorkplace)) {
+              sets.workplaces.add(newWorkplace);
+              populateGroup(
+                els.groups.workplaces,
+                Array.from(sets.workplaces),
+                "workplace"
+              );
+            }
+
+            const newJobTitle = currentEditRow.dataset.jobtitle;
+            if (newJobTitle && !sets.jobTitles.has(newJobTitle)) {
+              sets.jobTitles.add(newJobTitle);
+              populateGroup(
+                els.groups.jobTitles,
+                Array.from(sets.jobTitles),
+                "jobTitle"
+              );
+            }
+
+            const min = currentEditRow.dataset.ministry;
+            const dir = currentEditRow.dataset.directorate;
+            if (min && dir) {
+              if (!sets.directoratesByMinistry.has(min)) {
+                sets.directoratesByMinistry.set(min, new Set());
+              }
+              sets.directoratesByMinistry.get(min).add(dir);
+              updateDirectoratesOptions();
+            }
+
+            const modal = bootstrap.Modal.getInstance(editModalEl);
+            if (modal) modal.hide();
+            apply();
+          });
+        }
+
+        // Events عامة
         if (els.q) els.q.addEventListener("input", apply);
         if (els.applyAdvanced)
           els.applyAdvanced.addEventListener("click", apply);
@@ -1172,6 +1750,9 @@
             "change",
             updateDirectoratesOptions
           );
+        }
+        if (els.exportBtn) {
+          els.exportBtn.addEventListener("click", exportToExcel);
         }
 
         initAdvancedOptions();
